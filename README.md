@@ -7,9 +7,11 @@
 3.To execute this, open your command line interface (cmd) and enter the following command:
   
    **a. For single file use the command:** 
+        
         python challenge.py input/<filenames>
  
    **b. FOR multiple files, use the command:**
+        
         python challenge.py input/filename1.txt input/filename2.xml input/filename3.tsv
 
  
