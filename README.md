@@ -3,9 +3,10 @@
 ## Goal
 
 The BankruptcyWatch Coding Challenge is designed to help us locate experienced
-developers who are proficient in the Python language and standard libraries and
-in developing at Github and who are able to write clean, correct, and reliable
-code.
+developers who are proficient in the Python language and in developing at Github
+and who are able to write clean, correct, and reliable code. While it may seem
+easy at first, it contains some hidden difficulties to help us identify truly
+exceptional coders.
 
 ## The Challenge
 
