@@ -23,7 +23,8 @@ desgined to be run from the command line, that accepts a list of pathnames of
 files in any of the above formats, parses them, and writes a JSON-encoded list
 of the combined addresses to standard output, sorted by ZIP code. You can assume
 that the the format of each file corresponds to its extension, as illustrated by
-the above examples. The output should be a pretty-printed JSON array of JSON
+the above examples. Your submission should consist of a single file, without any 
+supporting documents. The output should be a pretty-printed JSON array of JSON
 objects, each having 5 or 6 properties, serialized in the given order:
 
 * `name`: The person's full name, if present, consisting of a list of one or more given names followed by the family name
