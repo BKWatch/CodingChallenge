@@ -4,9 +4,7 @@
 
 The BankruptcyWatch Coding Challenge is designed to help us locate experienced
 developers who are proficient in the Python language and in developing at Github
-and who are able to write clean, correct, and reliable code. While it may seem
-easy at first, it contains some hidden difficulties to help us identify truly
-exceptional coders.
+and who are able to write clean, correct, and reliable code.
 
 ## The Challenge
 
@@ -71,6 +69,9 @@ The script should
 * Output a list of addresses only if there are no errors in the input
 * Write any error messages to stderr
 * Exit with status `0` or `1` to indicate success or failure
+
+> [!WARNING]
+> Study the data carefully: it's not as easy as it looks.
 
 ## Timing
 
