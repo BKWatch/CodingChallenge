@@ -22,36 +22,43 @@ def parse_xml(file_path):
         root = tree.getroot()
         for ent in root.findall("./ENTITY/ENT"):
             record = {}
+
+            # Find elements
             name = ent.find("NAME")
             company = ent.find("COMPANY")
+            street = ent.find("STREET")
+            city = ent.find("CITY")
+            state = ent.find("STATE")
+            zip_code = ent.find("POSTAL_CODE")
+
+            # Process and assign if not None and not empty
             if name is not None and name.text.strip():
                 record["name"] = name.text.strip()
             elif company is not None and company.text.strip():
                 record["organization"] = company.text.strip()
-            street = ent.find("STREET")
             if street is not None and street.text.strip():
                 record["street"] = street.text.strip()
-            city = ent.find("CITY")
             if city is not None and city.text.strip():
                 record["city"] = city.text.strip()
-            state = ent.find("STATE")
             if state is not None and state.text.strip():
                 record["state"] = state.text.strip()
-            zip_code = ent.find("POSTAL_CODE")
+
+            # Handling ZIP or ZIP+4 formats
             if zip_code is not None and zip_code.text.strip():
                 zip_text = zip_code.text.strip()
-                # Checking if ZIP or ZIP+4
                 zip_pattern = re.match(r"(\d{5})(?:\s*-\s*(\d{4}))?", zip_text)
                 if zip_pattern:
                     zip_formatted = zip_pattern.group(1)
                     if zip_pattern.group(2):
                         zip_formatted += f"-{zip_pattern.group(2)}"
                     record["zip"] = zip_formatted
+
             if "name" in record or "organization" in record:
                 addresses.append(record)
     except ET.ParseError as e:
-        print(f"Error parsing XML: {e}", file=sys.stderr)
-        sys.exit(1)
+        print(f"Error parsing XML: {e}")
+        return []
+
     return addresses
 
 
@@ -64,21 +71,30 @@ def parse_tsv(file_path):
             for row in reader:
                 record = {}
 
-                # If organization exists
-                if (
+                # Check if 'last' contains an organization name
+                last_name = row.get("last", "").strip()
+                if any(
+                    keyword in last_name.lower()
+                    for keyword in ["llc", "company", "inc"]
+                ):
+                    record["organization"] = last_name
+                elif (
                     row.get("organization", "").strip()
                     and row.get("organization").strip() != "N/A"
                 ):
                     record["organization"] = row.get("organization").strip()
-                # Combine names
                 else:
+                    # Ignore "N/M/N"
                     name_parts = [
                         row.get(part).strip()
                         for part in ["first", "middle", "last"]
                         if row.get(part, "").strip()
+                        and row.get(part).strip().upper() != "N/M/N"
                     ]
                     if name_parts:
                         record["name"] = " ".join(name_parts)
+
+                # Continue with the rest of the address processing
                 if row.get("address", "").strip():
                     record["street"] = row.get("address").strip()
                 if row.get("city", "").strip():
@@ -89,7 +105,7 @@ def parse_tsv(file_path):
                     record["state"] = row.get("state").strip()
                 zip_code = row.get("zip", "").strip()
                 if zip_code:
-                    # Checking if ZIP or ZIP+4
+                    # Handling ZIP or ZIP+4
                     zip4 = row.get("zip4", "").strip()
                     if zip4 and zip4 != "N/A":
                         zip_code += f"-{zip4}"
@@ -119,7 +135,7 @@ def parse_txt(file_path):
             elif "street" not in record:
                 record["street"] = line
             elif "city" not in record:
-                # Checking "COUNTY" row exists
+                # Checking if "COUNTY" row exists
                 if "COUNTY" in line:
                     record["county"] = line.replace(" COUNTY", "")
                 else:
@@ -161,6 +177,7 @@ def main():
         except Exception as e:
             print(f"Error parsing file {file_path}: {e}", file=sys.stderr)
             sys.exit(1)
+    # Sorting by zip
     sorted_addresses = sorted(all_addresses, key=lambda r: r.get("zip", ""))
     json_output = json.dumps(sorted_addresses, indent=2)
     print(json_output)
