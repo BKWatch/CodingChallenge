@@ -48,7 +48,7 @@ Here is a sample output:
     "zip": "75040"
   },
   {
-    "company": "Central Trading Company Ltd.",
+    "organization": "Central Trading Company Ltd.",
     "street": "1501 North Division Street",
     "city": "Plainfield",
     "state": "Illinois",
