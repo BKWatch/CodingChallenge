@@ -132,12 +132,12 @@ class Entity:
                     raise NameError("one or more filenames you provided does not match the accepted extension")
                 dataset.extend(self.get_json(filename))
             print(json.dumps(sorted(dataset, key=lambda k: k['zip']), indent=4))
-            return 0
+            return sys.exit(0)
         except Exception:
             traceback.print_exc(file=sys.stderr)
             if args.files is None:
                 print("Did you provide any arguments? check --help for more information", file=sys.stderr)
-            return 1
+            return sys.exit(1)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
                     prog='BKWatch Coding Challenge',
