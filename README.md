@@ -19,7 +19,7 @@ The file formats are not documented, but you can deduce the formats by examing
 their contents. The challenge is to write a python script `challenge.py`,
 desgined to be run from the command line, that accepts a list of pathnames of
 files in any of the above formats, parses them, and writes a JSON-encoded list
-of the combined addresses to standard output, sorted by ZIP code. You can assume
+of the combined addresses to standard output, sorted by ZIP code in ascending order. You can assume
 that the the format of each file corresponds to its extension, as illustrated by
 the above examples. Your submission should consist of a single file, without any 
 supporting documents. The output should be a pretty-printed JSON array of JSON
@@ -65,8 +65,8 @@ The script should
 * Conform to [PEP 8](https://peps.python.org/pep-0008/)
 * Provide a `--help` option
 * Check for errors in the argument list
-* Check for errors in the input files that prevent them from being parsed
-* Output a list of addresses only if there are no errors in the input
+* Check the input files to make sure they conform to the formats expemplified by the sample files 
+* Output a list of addresses only if no errors were discovered in the above two steps
 * Write any error messages to stderr
 * Exit with status `0` or `1` to indicate success or failure
 
