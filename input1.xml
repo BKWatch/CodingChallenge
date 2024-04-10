@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='Latin-1'?>
+<EXPORT>
+  <META>
+    <ASSIGNED>Matt King</ASSIGNED>
+    <PHONE>(925) 621-1902</PHONE>
+    <DATE>Mon Mar  6 18:02:56 CDT 2017</DATE>
+  </META>
+  <ENTITY>
+    <ENT>
+      <NAME>Daniel Kaleta</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>7236 W 62nd St</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Summit Argo</CITY>
+      <STATE>Illinois</STATE>
+      <COUNTRY>U.S.A.</COUNTRY>
+      <POSTAL_CODE>60501 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Hillsboro Petroleum West, Inc.</COMPANY>
+      <STREET>19323 Skyridge Cir.</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Boca Raton</CITY>
+      <STATE>FL</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>33498 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Brenda Vega Chavez</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>7000 Newberry Ct E</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Fort Worth</CITY>
+      <STATE>TX</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>76120 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Milton W Gilchrist,Jr</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>4910 Paddock Club Court Apt A</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Montgomery</CITY>
+      <STATE>AL</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>36116 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Dana Walker</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>105 Briggs Cove</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lamar</CITY>
+      <STATE>MS</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>38642 - 8205</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Daniel Gonzales Sr</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>335 Regency Circle #103</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Salinas</CITY>
+      <STATE>CA</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>93906 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Julie Melendrez</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>721 Griswold Avenue</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>San Fernando</CITY>
+      <STATE>California</STATE>
+      <COUNTRY>US</COUNTRY>
+      <POSTAL_CODE>91340 - 2104</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Medi Caregivers LLC</COMPANY>
+      <STREET>1172 Old Salem Rd</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Conyers</CITY>
+      <STATE>Georgia</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>30094 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Ted A Tetzlaff</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>1365 Hudson Way</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Grand Island</CITY>
+      <STATE>FL</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>32735 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>David Allen Topaum Jr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>6110 Northwest Cherry Avenue</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lawton</CITY>
+      <STATE>OK</STATE>
+      <COUNTRY>USA</COUNTRY>
+      <POSTAL_CODE>73505 - 4427</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Consortium B, Inc.</COMPANY>
+      <STREET>1075 Griffin Street West</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Dallas</CITY>
+      <STATE>Texas</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>75215 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Eric Sherrod</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>1098 South Perkins Road</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Columbus</CITY>
+      <STATE>Mississippi</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>39705 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Ratasha Martin</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>5106 Wexford Road</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lansing</CITY>
+      <STATE>Michigan</STATE>
+      <COUNTRY>United States</COUNTRY>
+      <POSTAL_CODE>48911 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Larry L. Haumschild ,Jr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>W7826 County Road V</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lake Mills</CITY>
+      <STATE>WI</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>53551 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Rayfield Lloyd ,Jr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>6810 CHARITY WAY</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Leland</CITY>
+      <STATE>North Carolina</STATE>
+      <COUNTRY>U.S.</COUNTRY>
+      <POSTAL_CODE>28451 - 4501</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>STEPHEN BRIAN ADAMS,JR.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>3822 E. Edgerton Ave.</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Cudahy</CITY>
+      <STATE>WI</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>53110 - 1906</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Professional Resources Management of Crenshaw, LLC</COMPANY>
+      <STREET>60 Commerce Street, Suite 700</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Montgomery</CITY>
+      <STATE>Alabama</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>36104 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>OneSource Service, Inc.</COMPANY>
+      <STREET>135 West 20th Street</STREET>
+      <STREET_2>Suite 201</STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>New York</CITY>
+      <STATE>NY</STATE>
+      <COUNTRY>U.S.</COUNTRY>
+      <POSTAL_CODE>10011 - 3648</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Roseanne Botham</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>12429 Breezewood Dr., #D</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Whittier</CITY>
+      <STATE>CA</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>90604 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Ronald Dana Robinson</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>4491 High Gate Drive, N.W.</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Acworth</CITY>
+      <STATE>GA</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>30101 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>CEDRIC WILKERSON</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>2103 Washington Overlook Drive</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Fort Washington</CITY>
+      <STATE>Maryland</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>20744 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Isatou Davis</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>1070 SW 191 Lane</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Pembroke Pines</CITY>
+      <STATE>FL</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>33029 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Fernanda Camacho</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>155 Joliet Way</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Dalton</CITY>
+      <STATE>GA</STATE>
+      <COUNTRY>United States</COUNTRY>
+      <POSTAL_CODE>30720 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>David E. Simpson Jr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>8176 Teachout Rd.</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Otisville</CITY>
+      <STATE>MI</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>48463 - 9418</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>CT TSA Sales, LLC</COMPANY>
+      <STREET>102 Wolcott Road, Ste C</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Wolcott</CITY>
+      <STATE>CT</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>06716 - 2671</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Delveccio Antonio Zollar,Sr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>5223 Spruce Avenue</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Kansas City</CITY>
+      <STATE>MO</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>64130 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Jay Damron</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>1040 NW 38th Street</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lawton</CITY>
+      <STATE>OK</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>73505 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Billy Gene Walls Jr</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>114 Mrs. Gower Rd.</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Lawrenceburg</CITY>
+      <STATE>Tennessee</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>38464 - 5940</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Roger W. VanHoose,Jr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>190 Lakeshore Circle</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Georgetown</CITY>
+      <STATE>KY</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>40324 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Hajjar Medical Office Building of Jersey City, LLC</COMPANY>
+      <STREET>631 Grand Street</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Jersey City</CITY>
+      <STATE>New Jersey</STATE>
+      <COUNTRY>United States</COUNTRY>
+      <POSTAL_CODE>07304 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Darleen Harding Wheeler</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>803 Craig Street</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Schenectady</CITY>
+      <STATE>NY</STATE>
+      <COUNTRY>US</COUNTRY>
+      <POSTAL_CODE>12307 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Pie Lady &amp; Son Inc.</COMPANY>
+      <STREET>10 Rockland Place</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Nyack</CITY>
+      <STATE>NY</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>10960 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Tres Mosqueteros Corp. d/b/a La Pulperia de Tito</COMPANY>
+      <STREET>371 West 46th Street</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>New York</CITY>
+      <STATE>NY</STATE>
+      <COUNTRY>U.S.</COUNTRY>
+      <POSTAL_CODE>10036 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Ronald L Smith, II</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>7182 Calusa Drive</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Reynoldsburg</CITY>
+      <STATE>OH</STATE>
+      <COUNTRY>USA</COUNTRY>
+      <POSTAL_CODE>43068 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Vernon L McCalmant, III</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>2318 West 4475 South</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Roy</CITY>
+      <STATE>UT</STATE>
+      <COUNTRY>USA</COUNTRY>
+      <POSTAL_CODE>84067 - 1938</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Erlinda Balguma</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>3123 West Howard Street</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Chicago</CITY>
+      <STATE>Illinois</STATE>
+      <COUNTRY> </COUNTRY>
+      <POSTAL_CODE>60645 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Miya Jayzette Williams</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>7201 Laurel Ridge</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Greenwood</CITY>
+      <STATE>LA</STATE>
+      <COUNTRY>United States</COUNTRY>
+      <POSTAL_CODE>71033 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Andrew Reid Thayer</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>7680 Butler Court</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Onsted</CITY>
+      <STATE>MI</STATE>
+      <COUNTRY>U.S.</COUNTRY>
+      <POSTAL_CODE>49265 - 9433</POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME>Belton Jimmie Crooks Sr.</NAME>
+      <COMPANY> </COMPANY>
+      <STREET>3658 Cloverdale Rd</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Montgomery</CITY>
+      <STATE>AL</STATE>
+      <COUNTRY>U.S.A.</COUNTRY>
+      <POSTAL_CODE>36111 - </POSTAL_CODE>
+    </ENT>
+    <ENT>
+      <NAME> </NAME>
+      <COMPANY>Cervantes, Inc.</COMPANY>
+      <STREET>24 North Avenue East</STREET>
+      <STREET_2> </STREET_2>
+      <STREET_3> </STREET_3>
+      <CITY>Cranford</CITY>
+      <STATE>NJ</STATE>
+      <COUNTRY>U.S.A.</COUNTRY>
+      <POSTAL_CODE>07016 - </POSTAL_CODE>
+    </ENT>
+  </ENTITY>
+</EXPORT>
