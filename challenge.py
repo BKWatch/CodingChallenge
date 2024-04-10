@@ -60,7 +60,7 @@ def parseTSV(file):
 			for t in range(len(li)):
 				if li[t] and li[t]!="N/A":
 					if tags[t] == 'first' and li[t] != "":
-						json_node['name'] = " ".join([li[t],li[t+1],li[t+2]]) #Get whole name at once
+						json_node['name'] = li[t]+(' ' if li[t+1]=="N/M/N" else " "+li[t+1]+" ")+li[t+2] #Get whole name at once
 					elif tags[t] == 'zip':
 						json_node['zip'] = li[t]
 						if li[t+1]:
