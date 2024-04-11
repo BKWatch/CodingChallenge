@@ -1,0 +1,59 @@
+2024-04-11 02:41:09,480 - ERROR - Error: Unsupported file format: .py
+Traceback (most recent call last):
+  File "A:\CodingChallenge\challenge.py", line 122, in main
+    addresses = parse_files(file_paths)
+  File "A:\CodingChallenge\challenge.py", line 82, in parse_files
+    raise ValueError(f"Unsupported file format: {file_extension}")
+ValueError: Unsupported file format: .py
+2024-04-11 02:43:11,117 - ERROR - Error: [Errno 2] No such file or directory: 'input1.xml'
+Traceback (most recent call last):
+  File "A:\CodingChallenge\challenge.py", line 122, in main
+    addresses = parse_files(file_paths)
+  File "A:\CodingChallenge\challenge.py", line 76, in parse_files
+    addresses.extend(parse_xml_file(file_path))
+  File "A:\CodingChallenge\challenge.py", line 11, in parse_xml_file
+    tree = ET.parse(file_path)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 1229, in parse
+    tree.parse(source, parser)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 569, in parse
+    source = open(source, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'input1.xml'
+2024-04-11 02:47:45,032 - ERROR - Error: [Errno 2] No such file or directory: 'input1.xml'
+Traceback (most recent call last):
+  File "A:\CodingChallenge\challenge.py", line 122, in main
+    addresses = parse_files(file_paths)
+  File "A:\CodingChallenge\challenge.py", line 76, in parse_files
+    addresses.extend(parse_xml_file(file_path))
+  File "A:\CodingChallenge\challenge.py", line 11, in parse_xml_file
+    tree = ET.parse(file_path)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 1229, in parse
+    tree.parse(source, parser)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 569, in parse
+    source = open(source, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'input1.xml'
+2024-04-11 02:49:28,250 - ERROR - Error: [Errno 2] No such file or directory: 'input1.xml'
+Traceback (most recent call last):
+  File "A:\CodingChallenge\challenge.py", line 122, in main
+    addresses = parse_files(file_paths)
+  File "A:\CodingChallenge\challenge.py", line 76, in parse_files
+    addresses.extend(parse_xml_file(file_path))
+  File "A:\CodingChallenge\challenge.py", line 11, in parse_xml_file
+    tree = ET.parse(file_path)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 1229, in parse
+    tree.parse(source, parser)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 569, in parse
+    source = open(source, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'input1.xml'
+2024-04-11 02:49:35,437 - ERROR - Error: [Errno 2] No such file or directory: 'input1.xml'
+Traceback (most recent call last):
+  File "A:\CodingChallenge\challenge.py", line 122, in main
+    addresses = parse_files(file_paths)
+  File "A:\CodingChallenge\challenge.py", line 76, in parse_files
+    addresses.extend(parse_xml_file(file_path))
+  File "A:\CodingChallenge\challenge.py", line 11, in parse_xml_file
+    tree = ET.parse(file_path)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 1229, in parse
+    tree.parse(source, parser)
+  File "C:\Users\Furkhan\AppData\Local\Programs\Python\Python310\lib\xml\etree\ElementTree.py", line 569, in parse
+    source = open(source, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'input1.xml'
