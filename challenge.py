@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 import xml.etree.ElementTree as ET
 import argparse
 
@@ -121,29 +122,29 @@ def xml_parser(path: str):
 
     root = ET.parse(path).getroot()
     combined_addresses = []
-    for ent in root.findall('.//ENT'):
+    for ent in root.findall(".//ENT"):
         entity = {}
-        name = ent.find('NAME').text.strip()
+        name = ent.find("NAME").text.strip()
         if name:
-            entity['name'] = name
+            entity["name"] = name
         else:
-            entity['organization'] = ent.find('COMPANY').text.strip()
-        entity['street'] = ent.find('STREET').text.strip()
-        entity['city'] = ent.find('CITY').text.strip()
-        entity['state'] = ent.find('STATE').text.strip()
-        zip_code = ent.find('POSTAL_CODE').text.strip()
+            entity["organization"] = ent.find("COMPANY").text.strip()
+        entity["street"] = ent.find("STREET").text.strip()
+        entity["city"] = ent.find("CITY").text.strip()
+        entity["state"] = ent.find("STATE").text.strip()
+        zip_code = ent.find("POSTAL_CODE").text.strip()
         zip_code = "".join(zip_code.split(" "))
         if zip_code[-1] == "-":
             zip_code = zip_code[:-1]
-        entity['zip'] = zip_code
+        entity["zip"] = zip_code
         combined_addresses.append(entity)
 
     return combined_addresses
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Parse files and combine addresses.')
-    parser.add_argument('paths', nargs='+', help='Paths to files to parse')
+    parser = argparse.ArgumentParser(description="Parse files and combine addresses.")
+    parser.add_argument("paths", nargs="+", help="Paths to files to parse")
     args = parser.parse_args()
 
     all_parsed_data = []
@@ -179,7 +180,8 @@ def main():
         sys.exit(1)
 
     for data in all_parsed_data_sorted:
-        print(data)
+        data_pretty_json = json.dumps(data, indent=4)
+        print(data_pretty_json)
 
     sys.exit(0)
 
