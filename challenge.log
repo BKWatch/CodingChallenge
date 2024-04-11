@@ -1,0 +1,153 @@
+04/10/2024 08:34:21 PM ERROR: TSV file not found: input/input3.tsv
+04/10/2024 08:34:21 PM DEBUG: <class 'FileNotFoundError'>
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 56, in process_tsv_file
+    with open(file_path, 'r', newline='', encoding='utf-8') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input3.tsv'
+04/10/2024 08:38:18 PM ERROR: TSV file not found: input/input3.tsv
+04/10/2024 08:38:18 PM DEBUG: <class 'FileNotFoundError'>
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 56, in process_tsv_file
+    with open(file_path, 'r', newline='', encoding='utf-8') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input3.tsv'
+04/10/2024 09:23:45 PM ERROR: TSV file not found: input/input1.tsv
+04/10/2024 09:23:45 PM DEBUG: <class 'FileNotFoundError'>
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 67, in process_tsv_file
+    with open(file_path, 'r', newline='', encoding='utf-8') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input1.tsv'
+04/10/2024 10:09:30 PM ERROR: General error occurred: 'str' object has no attribute 'text'
+04/10/2024 10:10:05 PM ERROR: General error occurred: 'str' object has no attribute 'text'
+04/10/2024 11:04:55 PM ERROR: General error occurred: string indices must be integers
+04/10/2024 11:10:40 PM ERROR: General error occurred: string indices must be integers
+04/10/2024 11:28:23 PM ERROR: General error occurred: string indices must be integers
+04/10/2024 11:31:36 PM ERROR: General error occurred: string indices must be integers
+04/10/2024 11:52:06 PM ERROR: Error processing file input/input2.tsv: expected str, bytes or os.PathLike object, not dict
+04/10/2024 11:52:06 PM DEBUG: expected str, bytes or os.PathLike object, not dict
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 77, in process_tsv_file
+    return [process_tsv_row(row) for row in tsv_reader]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 77, in <listcomp>
+    return [process_tsv_row(row) for row in tsv_reader]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 96, in process_tsv_row
+    with open(filepath, 'r', newline='') as file:
+TypeError: expected str, bytes or os.PathLike object, not dict
+04/11/2024 12:41:21 AM ERROR: Error processing file input/input3.txt: string indices must be integers
+04/11/2024 12:41:21 AM DEBUG: string indices must be integers
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 129, in process_txt_file
+    return [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 129, in <listcomp>
+    return [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 152, in process_txt_entity
+    entities = sorted(entities, key=lambda x: x['zip'])
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 152, in <lambda>
+    entities = sorted(entities, key=lambda x: x['zip'])
+TypeError: string indices must be integers
+04/11/2024 12:41:48 AM ERROR: Error processing file input/input3.txt: string indices must be integers
+04/11/2024 12:41:48 AM DEBUG: string indices must be integers
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 129, in process_txt_file
+    return [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 129, in <listcomp>
+    return [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 152, in process_txt_entity
+    entities = sorted(entities, key=lambda x: x['zip'])
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 152, in <lambda>
+    entities = sorted(entities, key=lambda x: x['zip'])
+TypeError: string indices must be integers
+04/11/2024 12:53:10 AM ERROR: Error processing file input/input3.txt: 'str' object is not callable
+04/11/2024 12:53:10 AM DEBUG: 'str' object is not callable
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 117, in process_txt_file
+    entities = [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 117, in <listcomp>
+    entities = [process_txt_entity(entity) for entity in txt_entities]
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 141, in process_txt_entity
+    if 'COUNTY' in line():
+TypeError: 'str' object is not callable
+04/11/2024 01:17:01 AM ERROR: Error processing file input/input2.tsv: local variable 'name' referenced before assignment
+04/11/2024 01:17:01 AM DEBUG: local variable 'name' referenced before assignment
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 68, in process_tsv_file
+    entities.append(process_tsv_row(row))
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 107, in process_tsv_row
+    if name:
+UnboundLocalError: local variable 'name' referenced before assignment
+04/11/2024 01:27:18 AM ERROR: TSV file not found: input/input1.tsv
+04/11/2024 01:27:58 AM ERROR: Error processing file input/input3.xml: [Errno 2] No such file or directory: 'input/input3.xml'
+04/11/2024 01:27:58 AM DEBUG: [Errno 2] No such file or directory: 'input/input3.xml'
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 20, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input3.xml'
+04/11/2024 01:28:50 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:33:37 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:35:53 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:36:15 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:37:27 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:37:27 AM WARNING: Unsupported file extension: pdf | This File shall be skipped
+04/11/2024 01:38:48 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:38:48 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 01:45:13 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:45:13 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 01:45:59 AM ERROR: Unsupported file extension: pdf
+04/11/2024 01:45:59 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 01:46:43 AM ERROR: Unsupported file extension: pdf | input/input2.pdf 
+04/11/2024 01:46:43 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 01:53:51 AM ERROR: Unsupported file extension: pdf | input/input2.pdf 
+04/11/2024 01:53:51 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 01:57:12 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 01:57:12 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 36, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 01:58:27 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 01:58:27 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 36, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 01:59:06 AM ERROR: Unsupported file extension: pdf | input/input2.pdf 
+04/11/2024 01:59:06 AM WARNING: Unsupported file extension: pdf | This File:input/input2.pdf  shall be skipped
+04/11/2024 02:01:00 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:01:00 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 36, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 02:04:32 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:04:32 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 36, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 02:05:32 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:05:32 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 42, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 02:07:37 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:07:37 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 42, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 02:10:36 AM ERROR: <class 'FileNotFoundError'>
+04/11/2024 02:10:36 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:10:36 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 42, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
+04/11/2024 02:11:11 AM ERROR: Error processing file [Errno 2] No such file or directory: 'input/input2.xml': input/input2.xml
+04/11/2024 02:11:11 AM DEBUG: input/input2.xml
+Traceback (most recent call last):
+  File "/mnt/c/Users/Sriram/Documents/GitHub/CodingChallenge/challenge.py", line 42, in process_xml_file
+    with open(file_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'input/input2.xml'
