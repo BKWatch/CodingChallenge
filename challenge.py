@@ -25,8 +25,8 @@ def analize(list_p):
 			elif split_name[1] == '.xml':
 				parse_xml(item)
 			else:
-				print(item + " does not end in .txt, .tsv or .xml, please try again" +
-					" with the correct file", file=sys.stderr)
+				print(item + " does not end in .txt, .tsv or .xml, please try again"
+					+ " with the correct file", file=sys.stderr)
 				exit(0)
 		else:
 			print(item + " does not exist, please try again with the correct address", file=sys.stderr)
@@ -40,7 +40,8 @@ def printJson(l):
 		for key, val in list(i.items()):
 			if val.strip() == "":
 				i.pop(key)
-	json_str = json.dumps(l, indent=4)
+	result = sorted(l, key=lambda d: d['zip'])
+	json_str = json.dumps(result, indent=4)
 	print(json_str)
 
 
@@ -67,7 +68,8 @@ def getText(l):
 					"city":ins[3].split(',')[0],
 					"county":ins[2],
 					"state":ins[3].split(',')[1].strip().rstrip('0123456789- '),
-					"zip":ins[3].split(',')[1].strip().split(' ')[1]})
+					"zip":ins[3].split(',')[1].strip()
+					.strip('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ')})
 		else:
 			list_result.append({"name":ins[0],
 					"organization":"",
@@ -75,7 +77,8 @@ def getText(l):
 					"city":ins[2].split(',')[0],
 					"county":"",
 					"state":ins[2].split(',')[1].strip().rstrip('0123456789- '),
-					"zip":ins[2].split(',')[1].strip().split(' ')[1]})
+					"zip":ins[2].split(',')[1].strip()
+					.strip('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ')})
 
 
 
