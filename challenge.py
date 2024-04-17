@@ -35,9 +35,8 @@ def read_xml():
 
 
         # To let zip in the format 00000 or 00000-0000
-        print(postal_code, len(postal_code))
         if len(postal_code) > 8:
-            temp['zip'] = postal_code
+            temp['zip'] = postal_code[:5] + '-' + postal_code[-4:]
         else:
             temp['zip'] = postal_code[:5]
 
@@ -125,8 +124,66 @@ def read_tsv():
         file.close()
         json_file.close()
 
+def read_txt():
+    with open('input/input3.txt', 'r') as file:
+        # Read all lines and split into blocks separated by blank lines
+        content = file.read().strip()
+        blocks = content.split('\n\n')
+
+        res = []
+        for block in blocks:
+            lines = block.strip().split('\n')
+            temp = {}
+
+            temp['name'] = lines[0].strip()
+            # No company name in txt
+
+            temp['street'] = lines[1].strip()
+
+            if len(lines) == 4:
+                temp['county'] = lines[2].strip()[:-7]
+
+            address = lines[-1].strip().split(',')
+            temp['city'] = address[0]
+            state_add = address[1].split()
+            temp['state'] = ' '.join(state_add[0:-1]) # To combine the name like New Jersy
+
+
+            postal_code = state_add[-1]
+
+
+            # To let zip in the format 00000 or 00000-0000
+            if len(postal_code) == 5:
+                temp['zip'] = postal_code
+            elif 5 < len(postal_code) < 9:
+                temp['zip'] = postal_code[:5]
+            else:
+                temp['zip'] = postal_code[:5] + '-' + postal_code[-4:]
+
+
+            # Create a temp value to store the zip for sorting
+            if "-" in temp['zip']:
+                temp["fake_zip"] = postal_code[:5]+postal_code[-4:]
+            else:
+                temp["fake_zip"] = postal_code+"0000"
+
+            res.append(temp) # Add the dictionary to the result array
+        res.sort(key=lambda x: x['fake_zip'])
+        
+        for i in res:
+            del i['fake_zip']
+
+
+        with open('output3.json', 'w') as json_file:
+            json.dump(res, json_file, indent=4)   
+
+        file.close()
+        json_file.close()
+
 
 
 if __name__ == '__main__':
     read_xml()
+    read_tsv()
+    read_txt()
 
