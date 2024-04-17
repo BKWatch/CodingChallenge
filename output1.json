@@ -11,7 +11,6 @@
         "street": "24 North Avenue East",
         "city": "Cranford",
         "state": "NJ",
-        "country": "U.S.A.",
         "zip": "07016"
     },
     {
@@ -19,7 +18,6 @@
         "street": "631 Grand Street",
         "city": "Jersey City",
         "state": "New Jersey",
-        "country": "United States",
         "zip": "07304"
     },
     {
@@ -27,7 +25,6 @@
         "street": "135 West 20th Street",
         "city": "New York",
         "state": "NY",
-        "country": "U.S.",
         "zip": "10011 - 3648"
     },
     {
@@ -35,7 +32,6 @@
         "street": "371 West 46th Street",
         "city": "New York",
         "state": "NY",
-        "country": "U.S.",
         "zip": "10036"
     },
     {
@@ -50,7 +46,6 @@
         "street": "803 Craig Street",
         "city": "Schenectady",
         "state": "NY",
-        "country": "US",
         "zip": "12307"
     },
     {
@@ -65,7 +60,6 @@
         "street": "6810 CHARITY WAY",
         "city": "Leland",
         "state": "North Carolina",
-        "country": "U.S.",
         "zip": "28451 - 4501"
     },
     {
@@ -87,7 +81,6 @@
         "street": "155 Joliet Way",
         "city": "Dalton",
         "state": "GA",
-        "country": "United States",
         "zip": "30720"
     },
     {
@@ -123,7 +116,6 @@
         "street": "3658 Cloverdale Rd",
         "city": "Montgomery",
         "state": "AL",
-        "country": "U.S.A.",
         "zip": "36111"
     },
     {
@@ -166,7 +158,6 @@
         "street": "7182 Calusa Drive",
         "city": "Reynoldsburg",
         "state": "OH",
-        "country": "USA",
         "zip": "43068"
     },
     {
@@ -181,7 +172,6 @@
         "street": "5106 Wexford Road",
         "city": "Lansing",
         "state": "Michigan",
-        "country": "United States",
         "zip": "48911"
     },
     {
@@ -189,7 +179,6 @@
         "street": "7680 Butler Court",
         "city": "Onsted",
         "state": "MI",
-        "country": "U.S.",
         "zip": "49265 - 9433"
     },
     {
@@ -211,7 +200,6 @@
         "street": "7236 W 62nd St",
         "city": "Summit Argo",
         "state": "Illinois",
-        "country": "U.S.A.",
         "zip": "60501"
     },
     {
@@ -233,7 +221,6 @@
         "street": "7201 Laurel Ridge",
         "city": "Greenwood",
         "state": "LA",
-        "country": "United States",
         "zip": "71033"
     },
     {
@@ -248,7 +235,6 @@
         "street": "6110 Northwest Cherry Avenue",
         "city": "Lawton",
         "state": "OK",
-        "country": "USA",
         "zip": "73505 - 4427"
     },
     {
@@ -270,7 +256,6 @@
         "street": "2318 West 4475 South",
         "city": "Roy",
         "state": "UT",
-        "country": "USA",
         "zip": "84067 - 1938"
     },
     {
@@ -285,7 +270,6 @@
         "street": "721 Griswold Avenue",
         "city": "San Fernando",
         "state": "California",
-        "country": "US",
         "zip": "91340 - 2104"
     },
     {
