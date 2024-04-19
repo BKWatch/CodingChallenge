@@ -14,6 +14,7 @@ import argparse
 import csv
 import xml.etree.ElementTree as ET
 
+
 def parse_xml(file_path):
     addresses = []
     tree = ET.parse(file_path)
@@ -32,12 +33,11 @@ def parse_xml(file_path):
 
     for entry in root.findall('.//ENT'):
         address = {}
-        skip_else = False
         for child in entry:
             for tag in tags:
                 if child.tag == tag:
                     value = child.text.strip()
-                    if tag == ['STREET', 'STREET_2', 'STREET_3'] and value != '':
+                    if tag in ['STREET_2', 'STREET_3'] and value != '':
                         address['street'] += ", " + value
                     elif tag == 'POSTAL_CODE':
                         address[tags[tag]] = value.strip("- ").replace(" - ", "-")
@@ -46,10 +46,11 @@ def parse_xml(file_path):
         addresses.append(address)
     return addresses
 
+
 def parse_tsv(file_path):
     addresses = []
     tags = ['name', 'middle', 'last', 'organization', 'street', 'city', 'state', 'county', 'zip', 'zip4']
-    with open(file_path, 'r', newline = '') as file:
+    with open(file_path, 'r', newline='') as file:
         tsv_reader = csv.reader(file, delimiter='\t')
         next(tsv_reader)
         for row in tsv_reader:
@@ -59,7 +60,7 @@ def parse_tsv(file_path):
                 if value == '' or value == 'N/M/N':
                     continue
                 address[tags[i]] = value
-        
+
             # Trim the address
             if 'name' not in address and 'last' in address:
                 address['organization'] = address['last']
@@ -78,15 +79,16 @@ def parse_tsv(file_path):
             addresses.append(address)
     return addresses
 
+
 def parse_txt(file_path):
     addresses = []
     with open(file_path, 'r') as file:
         paragraphs = file.read().split('\n\n')
-        
+
         for paragraph in paragraphs:
             address = {}
             lines = paragraph.split('\n')
-            
+
             if len(lines) == 3:
                 last_line = lines[2].strip().split(',')
                 address = {
@@ -132,6 +134,7 @@ def validate_address(address):
     if 'name' not in address and 'organization' not in address:
         return False
     return True
+
 
 def main():
     parser = argparse.ArgumentParser(description='Parse and combine US addresses from multiple file formats')
