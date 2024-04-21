@@ -4,6 +4,10 @@ import json
 import re
 
 
+def parse_xml(file: str):
+    pass
+
+
 def parse_txt(file: str):
     json_output = []
     with open(file, 'r', encoding='utf-8') as file:
@@ -16,12 +20,13 @@ def parse_txt(file: str):
                 elif 'street' not in row:
                     row['street'] = line
                 elif 'county' not in row and 'county' in line.lower():
-                    row['county'] = line.split("//s+")[0]
+                    county = line.split("//s+")[0]
                 elif 'state' not in row:
                     parts = re.split(r'\s+', line)
+                    row['city'] = parts[0][:-1]
+                    if county: row['county'] = county
                     row['state'] = parts[1]
                     row['zip'] = parts[2]
-                    row['city'] = parts[0][:-1]
             else:
                 if row:
                     json_output.append(row)
@@ -49,7 +54,8 @@ def parse(file: str):
         output_json += parse_tsv(file)
     elif file_type == 'txt':
         output_json += parse_txt(file)
-
+    elif file_type == 'xml':
+        output_json += parse_xml(file)
     with open(output_file, 'w') as json_file:
         json.dump(output_json, json_file, indent=4)
 
