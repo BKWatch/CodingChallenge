@@ -6,6 +6,54 @@ import xml.etree.ElementTree as ET
 
 
 def parse_xml(file: str):
+    """
+        Parses an XML file containing entity information and returns a list of dictionaries
+        with parsed data.
+
+        Args:
+            file (str): The path to the XML file to parse.
+
+        Returns:
+            list: A list of dictionaries containing parsed entity information.
+                  Each dictionary represents one entity with the following keys:
+                  - 'name': Name of the entity (if available).
+                  - 'organization': Organization/company of the entity (if available).
+                  - 'street': Street address of the entity (if available).
+                  - 'city': City of the entity (if available).
+                  - 'county': County of the entity (if available).
+                  - 'state': State of the entity (if available).
+                  - 'zip': Postal code of the entity (if available).
+
+        Example:
+            XML structure:
+            <ENTITY>
+                <ENT>
+                    <NAME>John Doe</NAME>
+                    <COMPANY>ABC Inc</COMPANY>
+                    <STREET>123 Main St</STREET>
+                    <CITY>Anytown</CITY>
+                    <STATE>California</STATE>
+                    <POSTAL_CODE>12345</POSTAL_CODE>
+                </ENT>
+                <ENT>
+                    ...
+                </ENT>
+                ...
+            </ENTITY>
+
+            Resulting output:
+            [
+                {
+                    'name': 'John Doe',
+                    'organization': 'ABC Inc',
+                    'street': '123 Main St',
+                    'city': 'Anytown',
+                    'state': 'California',
+                    'zip': '12345'
+                },
+                ...
+            ]
+        """
     result = []
     tree = ET.parse(file)
     root = tree.getroot()
@@ -58,6 +106,53 @@ def parse_xml(file: str):
 
 
 def parse_txt(file: str):
+    """
+        Parses a text file containing address information and returns a list of dictionaries
+        with parsed data.
+
+        Args:
+            file (str): The path to the text file to parse.
+
+        Returns:
+            list: A list of dictionaries containing parsed address information.
+                  Each dictionary represents an address with the following keys:
+                  - 'name': Name associated with the address.
+                  - 'street': Street address.
+                  - 'city': City.
+                  - 'county': County (if available).
+                  - 'state': State.
+                  - 'zip': Zip code.
+
+        Example:
+            Text file content:
+            David Scherrep
+            12014 Cobblewood Lane North
+            DUVAL COUNTY
+            Jacksonville, Florida 32225
+
+            Sonji S Dixon-McCoy
+            1222 East 146th Street
+            Dolton, Illinois 60419-
+
+            Resulting output:
+            [
+                {
+                    'name': 'David Scherrep',
+                    'street': '12014 Cobblewood Lane North',
+                    'county': 'DUVAL COUNTY',
+                    'city': 'Jacksonville',
+                    'state': 'Florida',
+                    'zip': '32225'
+                },
+                {
+                    'name': 'Sonji S Dixon-McCoy',
+                    'street': '1222 East 146th Street',
+                    'city': 'Dolton',
+                    'state': 'Illinois',
+                    'zip': '60419-'
+                }
+            ]
+    """
     json_output = []
     with open(file, 'r', encoding='utf-8') as file:
         row = {}
@@ -84,6 +179,54 @@ def parse_txt(file: str):
 
 
 def parse_tsv(file: str):
+    """
+        Parses a TSV (Tab-Separated Values) file containing address information and
+        returns a list of dictionaries with parsed data.
+
+        Args:
+            file (str): The path to the TSV file to parse.
+
+        Returns:
+            list: A list of dictionaries containing parsed address information.
+                  Each dictionary represents an address with the following keys:
+                  - 'name': Name associated with the address.
+                  - 'organization': Organization/company associated with the address.
+                  - 'street': Street address.
+                  - 'city': City.
+                  - 'county': County.
+                  - 'state': State.
+                  - 'zip': Zip code.
+
+        Example:
+            TSV file content:
+            first	middle	last	organization	address	city	county	state	zip	zip4
+            John		Doe	ABC Inc	123 Main St	Anytown	Any County	CA	12345	6789
+            Jane		Smith	XYZ Co	456 Elm St	Sometown	Another County	NY	54321
+
+            Resulting output:
+            [
+                {
+                    'name': 'John Doe',
+                    'organization': 'ABC Inc',
+                    'street': '123 Main St',
+                    'city': 'Anytown',
+                    'county': 'Any County',
+                    'state': 'CA',
+                    'zip': '12345',
+                    'zip4': '6789'
+                },
+                {
+                    'name': 'Jane Smith',
+                    'organization': 'XYZ Co',
+                    'street': '456 Elm St',
+                    'city': 'Sometown',
+                    'county': 'Another County',
+                    'state': 'NY',
+                    'zip': '54321',
+                    'zip4': ''
+                }
+            ]
+    """
     json_output = []
     with open(file, mode='r', newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file, delimiter='\t')
@@ -130,7 +273,6 @@ def parse_tsv(file: str):
     return json_output
 
 
-# parse data from the file
 def parse(file: str):
     file_type = file.split(".")[-1]
 
