@@ -2,10 +2,59 @@ import sys
 import csv
 import json
 import re
+import xml.etree.ElementTree as ET
 
 
 def parse_xml(file: str):
-    pass
+    result = []
+    tree = ET.parse(file)
+    root = tree.getroot()
+    if root.find('ENTITY'):
+        for ent in root.find('ENTITY').findall('ENT'):
+            row = {}
+            if ent.find('NAME') is not None:
+                name = ent.find('NAME').text.strip()
+                if name:
+                    row['name'] = name
+            if ent.find('COMPANY') is not None:
+                company = ent.find('COMPANY').text.strip()
+                if company:
+                    row['organization'] = company
+            street = []
+            if ent.find('STREET') is not None:
+                street0 = ent.find('STREET').text.strip()
+                if street0:
+                    street.append(street0)
+            if ent.find('STREET1') is not None:
+                street1 = ent.find('STREET1').text.strip()
+                if street1:
+                    street.append(street1)
+            if ent.find('STREET2') is not None:
+                street2 = ent.find('STREET2').text.strip()
+                if street2:
+                    street.append(street2)
+            if street:
+                row['street'] = ', '.join(street)
+            if ent.find('CITY') is not None:
+                city = ent.find('CITY').text.strip()
+                if city:
+                    row['city'] = city
+            if ent.find('COUNTY') is not None:
+                county = ent.find('COUNTY').text.strip()
+                if county:
+                    row['county'] = county
+            if ent.find('STATE') is not None:
+                state = ent.find('STATE').text.strip()
+                if state:
+                    row['state'] = state
+            if ent.find('POSTAL_CODE') is not None:
+                code = ent.find('POSTAL_CODE').text.strip()
+                if code:
+                    row['zip'] = code
+
+            result.append(row)
+
+    return result
 
 
 def parse_txt(file: str):
