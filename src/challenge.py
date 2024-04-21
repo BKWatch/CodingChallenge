@@ -65,13 +65,13 @@ def parse_txt(file: str):
             line = line.strip()
             if line:
                 if 'name' not in row:
-                    row['name'] = line
+                    row['name'] = line.strip()
                 elif 'street' not in row:
-                    row['street'] = line
+                    row['street'] = line.strip()
                 elif 'county' not in row and 'county' in line.lower():
-                    county = line.split("//s+")[0]
+                    county = line.strip().split("//s+")[0]
                 elif 'state' not in row:
-                    parts = re.split(r'\s+', line)
+                    parts = re.split(r'\s+', line.strip())
                     row['city'] = parts[0][:-1]
                     if county: row['county'] = county
                     row['state'] = parts[1]
@@ -87,7 +87,44 @@ def parse_tsv(file: str):
     json_output = []
     with open(file, mode='r', newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file, delimiter='\t')
-        for row in reader:
+        for curr in reader:
+            row = {}
+            # parse name
+            name = ''
+            if 'first' in curr:
+                name += curr['first']
+            if 'middle' in curr:
+                name = name + " " + curr['middle']
+            if 'last' in curr:
+                name = name + " " + curr['last']
+            if name.strip():
+                row['name'] = name.strip()
+            # parse org
+            org = ''
+            if 'organization' in curr and curr['organization'] != 'N/A':
+                name += curr['organization']
+            if org.strip():
+                row['organization'] = org.strip()
+            # parse address
+            if 'address' in curr and curr['address'].strip():
+                row['street'] = curr['address'].strip()
+            # parse city
+            if 'city' in curr and curr['city'].strip():
+                row['city'] = curr['city'].strip()
+            # parse county
+            if 'county' in curr and curr['county'].strip():
+                row['county'] = curr['county'].strip()
+            # parse state
+            if 'state' in curr and curr['state'].strip():
+                row['state'] = curr['state'].strip()
+            # parse zip
+            zip_add = ''
+            if 'zip' in curr and curr['zip'].strip():
+                zip_add = curr['zip'].strip()
+            if 'zip4' in curr and curr['zip4'].strip():
+                zip_add = curr['zip4'].strip()
+            if zip_add.strip():
+                row['zip'] = zip_add.strip()
             json_output.append(row)
 
     return json_output
@@ -96,17 +133,13 @@ def parse_tsv(file: str):
 # parse data from the file
 def parse(file: str):
     file_type = file.split(".")[-1]
-    output_file = 'output/output.json'
 
-    output_json = []
     if file_type == 'tsv':
-        output_json += parse_tsv(file)
+        return parse_tsv(file)
     elif file_type == 'txt':
-        output_json += parse_txt(file)
+        return parse_txt(file)
     elif file_type == 'xml':
-        output_json += parse_xml(file)
-    with open(output_file, 'w') as json_file:
-        json.dump(output_json, json_file, indent=4)
+        return parse_xml(file)
 
 
 # read filenames
@@ -115,6 +148,10 @@ if __name__ == "__main__":
     if not file_names:
         print("Missing required parameter filenames")
     else:
+        output_file = 'output/output.json'
+        output_json = []
         for file_name in file_names:
-            parse(file_name)
+            output_json += parse(file_name)
+        with open(output_file, 'w') as json_file:
+            json.dump(output_json, json_file, indent=4)
     print("process completed")
