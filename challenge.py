@@ -16,10 +16,21 @@ class FileTypeChecker(argparse.Action):
         setattr(namespace, self.dest, values)
 
 
+def validate_xml_structure(root):
+    entity_exists = root.find("ENTITY")
+    ent_exists = root.findall("ENT")
+    if entity_exists is None:
+        raise ValueError("ENTITY section is missing")
+    if ent_exists is None:
+        raise ValueError("ENT sections are missing")
+
+
 def parse_xml(file_path):
     try:
         tree = ET.parse(file_path)
         root = tree.getroot()
+        validate_xml_structure(root)
+
         entities = []
 
         def extract_entity_data(entity, fields):
