@@ -65,8 +65,9 @@ def xml_extract_entity_data(entity, fields):
         if "street" in field.lower():
             if value:
                 street.append(value)
-        if value and value is not None:
-            entity_data[assigned_field] = value if value else None
+        else:
+            if value:
+                entity_data[assigned_field] = value if value else None
 
     entity_data["street"] = ", ".join(street)
     return clean_none_values(entity_data)
@@ -228,6 +229,9 @@ def main():
         elif ext == ".tsv":
             entities = parse_tsv(file)
         all_entities.extend(entities)
+
+    # Sort entities by zip code
+    all_entities = sorted(all_entities, key=lambda x: x["zip"])
 
     json_output = json.dumps(all_entities, indent=4)
     print(json_output)
