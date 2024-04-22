@@ -17,9 +17,12 @@ def clean_none_values(entity):
     return {k: v for k, v in entity.items() if v is not None}
 
 
-def clean_zip(zip_code):
+# Some ZIP codes have a trailing hyphen, this function removes it
+def clean_and_validate_zip(zip_code):
     if zip_code.endswith("-"):
         return zip_code[:-1]
+    if not re.match(r"^\d{5}(-\d{4})?$", zip_code):
+        raise ValueError(f"Invalid ZIP code: {zip_code}")
     return zip_code
 
 
@@ -58,7 +61,7 @@ def xml_extract_entity_data(entity, fields):
 
         if assigned_field == "postal_code":
             value = value.replace(" ", "")
-            value = clean_zip(value)
+            value = clean_and_validate_zip(value)
             assigned_field = "zip"
         if assigned_field == "company":
             assigned_field = "organization"
@@ -96,27 +99,40 @@ def parse_xml(file_path):
             entity_data = xml_extract_entity_data(entity, fields)
             entities.append(entity_data)
         return entities
+    except FileNotFoundError as e:
+        print(f"File not found: {e}", file=sys.stderr)
+        sys.exit(1)
     except ET.ParseError as e:
         print(f"Error parsing XML file: {e}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading file: {e}", file=sys.stderr)
         sys.exit(1)
 
 
 def text_split_address(address):
+    # Assuming the address is in the format "city, state ZIP code"
     city, state_and_zip = map(str.strip, address.strip().split(","))
     match = re.search(r"\d", state_and_zip)
     if match:
         index = match.start()
         state = state_and_zip[:index].strip()
-        zip_code = clean_zip(state_and_zip[index:].strip())
-
+        zip_code = clean_and_validate_zip(state_and_zip[index:].strip())
     else:
         raise ValueError("Invalid address format: ZIP code not found in address")
     return city, state, zip_code
 
 
+def text_validate_entry_structure(entry):
+    #  An entry should have 3 or 4 lines
+    if len(entry) not in [3, 4]:
+        raise ValueError("Invalid number of lines in", entry)
+
+
 def text_extract_entity_data(entry):
     entity_data = create_empty_entity()
     entry = entry.split("\n")
+    text_validate_entry_structure(entry)
     entry_contains_county = len(entry) == 4
     entity_data["name"] = entry[0].strip()
     entity_data["street"] = entry[1].strip()
@@ -137,14 +153,16 @@ def parse_txt(file_path):
             content = file.read()
         entries = content.split("\n\n")
         entries = [entry.strip() for entry in entries if entry]
-
         entities = []
         for entry in entries:
             entities.append(text_extract_entity_data(entry))
         return entities
 
+    except FileNotFoundError as e:
+        print(f"File not found: {e}", file=sys.stderr)
+        sys.exit(1)
     except Exception as e:
-        print(f"Error parsing TXT file: {e}", file=sys.stderr)
+        print(f"Error reading file: {e}", file=sys.stderr)
         sys.exit(1)
 
 
@@ -172,7 +190,9 @@ def tsv_extract_entity_data(row):
     entity["street"] = row["address"].strip()
     entity["city"] = row["city"].strip()
     entity["state"] = row["state"].strip()
-    entity["zip"] = clean_zip(row["zip"].strip() + "-" + row["zip4"].strip())
+    entity["zip"] = clean_and_validate_zip(
+        row["zip"].strip() + "-" + row["zip4"].strip()
+    )
     entity = clean_none_values(entity)
     return entity
 
@@ -205,6 +225,12 @@ def parse_tsv(file_path):
             for row in reader:
                 entities.append(tsv_extract_entity_data(row))
             return entities
+    except FileNotFoundError as e:
+        print(f"File not found: {e}", file=sys.stderr)
+        sys.exit(1)
+    except csv.Error as e:
+        print(f"Error parsing TSV file: {e}", file=sys.stderr)
+        sys.exit(1)
     except Exception as e:
         print(f"Error parsing TSV file: {e}", file=sys.stderr)
         sys.exit(1)
