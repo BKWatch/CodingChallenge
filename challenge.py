@@ -24,6 +24,7 @@ def parse_xml(file_path):
 
         def extract_entity_data(entity, fields):
             entity_data = {}
+            street = []
             for field in fields:
                 element = entity.find(field)
                 assigned_field = field.lower()
@@ -32,15 +33,30 @@ def parse_xml(file_path):
                     if element is not None and element.text is not None
                     else None
                 )
+
                 if assigned_field == "postal_code":
                     value = value.replace(" ", "")
                     if value.endswith("-"):
                         value = value[:-1]
-                if value != "" and value is not None:
-                    entity_data[assigned_field] = value
+                if "street" in field.lower():
+                    if value:
+                        street.append(value)
+                else:
+                    if value != "" and value is not None:
+                        entity_data[assigned_field] = value
+            entity_data["street"] = ", ".join(street)
             return entity_data
 
-        fields = ["NAME", "COMPANY", "STREET", "CITY", "STATE", "POSTAL_CODE"]
+        fields = [
+            "NAME",
+            "COMPANY",
+            "STREET",
+            "STREET_2",
+            "STREET_3",
+            "CITY",
+            "STATE",
+            "POSTAL_CODE",
+        ]
         for entity in root.findall(".//ENT"):
             entity_data = extract_entity_data(entity, fields)
             entities.append(entity_data)
