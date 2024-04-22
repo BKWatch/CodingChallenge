@@ -3,6 +3,23 @@ import os
 import xml.etree.ElementTree as ET
 import sys
 import json
+import re
+
+ordered_keys = ["name", "company", "street", "city", "state", "county", "zip"]
+
+
+def create_empty_entity():
+    return {key: None for key in ordered_keys}
+
+
+def clean_none_values(entity):
+    return {k: v for k, v in entity.items() if v is not None}
+
+
+def clean_zip(zip_code):
+    if zip_code.endswith("-"):
+        return zip_code[:-1]
+    return zip_code
 
 
 class FileTypeChecker(argparse.Action):
@@ -16,7 +33,7 @@ class FileTypeChecker(argparse.Action):
         setattr(namespace, self.dest, values)
 
 
-def validate_xml_structure(root):
+def xml_validate_structure(root):
     entity_exists = root.find("ENTITY")
     ent_exists = root.findall("ENT")
     if entity_exists is None:
@@ -25,10 +42,8 @@ def validate_xml_structure(root):
         raise ValueError("ENT sections are missing")
 
 
-def extract_entity_data(entity, fields):
-    ordered_keys = ["name", "company", "street", "city", "state", "zip"]
-    entity_data = {key: None for key in ordered_keys}
-
+def xml_extract_entity_data(entity, fields):
+    entity_data = create_empty_entity()
     street = []
 
     for field in fields:
@@ -42,8 +57,7 @@ def extract_entity_data(entity, fields):
 
         if assigned_field == "postal_code":
             value = value.replace(" ", "")
-            if value.endswith("-"):
-                value = value[:-1]
+            value = clean_zip(value)
             assigned_field = "zip"
         if "street" in field.lower():
             if value:
@@ -52,15 +66,14 @@ def extract_entity_data(entity, fields):
             entity_data[assigned_field] = value if value else None
 
     entity_data["street"] = ", ".join(street)
-    entity_data = {k: v for k, v in entity_data.items() if v is not None}
-    return entity_data
+    return clean_none_values(entity_data)
 
 
 def parse_xml(file_path):
     try:
         tree = ET.parse(file_path)
         root = tree.getroot()
-        validate_xml_structure(root)
+        xml_validate_structure(root)
 
         entities = []
 
@@ -76,7 +89,7 @@ def parse_xml(file_path):
             "POSTAL_CODE",
         ]
         for entity in root.findall(".//ENT"):
-            entity_data = extract_entity_data(entity, fields)
+            entity_data = xml_extract_entity_data(entity, fields)
             entities.append(entity_data)
         return entities
     except ET.ParseError as e:
@@ -84,9 +97,51 @@ def parse_xml(file_path):
         sys.exit(1)
 
 
+def split_address(address):
+    city, state_and_zip = map(str.strip, address.strip().split(","))
+    match = re.search(r"\d", state_and_zip)
+    if match:
+        index = match.start()
+        state = state_and_zip[:index].strip()
+        zip_code = clean_zip(state_and_zip[index:].strip())
+
+    else:
+        raise ValueError("Invalid address format: ZIP code not found in address")
+    return city, state, zip_code
+
+
+def text_extract_entity_data(entry):
+    entity_data = create_empty_entity()
+    entry = entry.split("\n")
+    entry_contains_county = len(entry) == 4
+    entity_data["name"] = entry[0].strip()
+    entity_data["street"] = entry[1].strip()
+    if entry_contains_county:
+        entity_data["county"] = entry[2].replace("COUNTY", "").strip()
+        city, state, zip = split_address(entry[3])
+    else:
+        city, state, zip = split_address(entry[2])
+    entity_data["city"] = city
+    entity_data["state"] = state
+    entity_data["zip"] = zip
+    return clean_none_values(entity_data)
+
+
 def parse_txt(file_path):
-    # print("Parsing TXT file:", file_path)
-    return []
+    try:
+        with open(file_path, "r") as file:
+            content = file.read()
+        entries = content.split("\n\n")
+        entries = [entry.strip() for entry in entries if entry]
+
+        entities = []
+        for entry in entries:
+            entities.append(text_extract_entity_data(entry))
+        return entities
+
+    except Exception as e:
+        print(f"Error parsing TXT file: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 def parse_tsv(file_path):
