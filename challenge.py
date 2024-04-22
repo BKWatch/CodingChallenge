@@ -4,8 +4,9 @@ import xml.etree.ElementTree as ET
 import sys
 import json
 import re
+import csv
 
-ordered_keys = ["name", "company", "street", "city", "state", "county", "zip"]
+ordered_keys = ["name", "organization", "street", "city", "state", "county", "zip"]
 
 
 def create_empty_entity():
@@ -59,6 +60,8 @@ def xml_extract_entity_data(entity, fields):
             value = value.replace(" ", "")
             value = clean_zip(value)
             assigned_field = "zip"
+        if assigned_field == "company":
+            assigned_field = "organization"
         if "street" in field.lower():
             if value:
                 street.append(value)
@@ -142,11 +145,6 @@ def parse_txt(file_path):
     except Exception as e:
         print(f"Error parsing TXT file: {e}", file=sys.stderr)
         sys.exit(1)
-
-
-def parse_tsv(file_path):
-    # print("Parsing TSV file:", file_path)
-    return []
 
 
 def main():
