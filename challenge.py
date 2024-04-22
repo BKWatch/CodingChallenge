@@ -8,6 +8,15 @@ from collections import defaultdict
 
 
 def parse_xml(fp):
+    """Parses an xml file and extracts entity records.
+
+    Args:
+        fp: The filepath of the txt file.
+    Returns:
+        A list of entity defaultdicts.
+    Raises:
+        Exception: if fp is unable to be parsed.
+    """
     records = []
     try:
         tree = ET.parse(fp)
@@ -15,7 +24,6 @@ def parse_xml(fp):
     except Exception as e:
         print(f"Error parsing {fp}\n{e}", file=sys.stderr)
         sys.exit(1)
-
     for ent in root.findall(".//ENT"):
         record = defaultdict()
         for element in ent:
@@ -42,16 +50,24 @@ def parse_xml(fp):
                         zip = zip[:-1]
                     record["zip"] = zip
         records.append(record)
-
     return records
 
 
 def parse_tsv(fp):
+    """Parses a tsv file and extracts entity records.
+
+    Args:
+        fp: The filepath of the txt file.
+    Returns:
+        A list of entity defaultdicts.
+    Raises:
+        Exception: if fp is unable to be parsed.
+    """
     records = []
     try:
         with open(fp, 'r') as f:
             reader = csv.reader(f, delimiter="\t")
-            next(reader)
+            next(reader)  # to skip the headers
             for row in reader:
                 record = defaultdict()
                 if row[0] == "" and row[3] == "N/A":
@@ -78,11 +94,19 @@ def parse_tsv(fp):
     except Exception as e:
         print(f"Error parsing {fp}\n{e}", file=sys.stderr)
         sys.exit(1)
-
     return records
 
 
 def parse_txt(fp):
+    """Parses a txt file and extracts entity records.
+
+    Args:
+        fp: The filepath of the txt file.
+    Returns:
+        A list of entity defaultdicts.
+    Raises:
+        Exception: if fp is unable to be parsed.
+    """
     records = []
     try:
         with open(fp, 'r') as f:
@@ -92,6 +116,7 @@ def parse_txt(fp):
                 record = defaultdict()
                 record["name"] = ent[0]
                 record["street"] = ent[1]
+                # insert the key/values in order to make life easy
                 if len(ent) == 4:
                     location = txt_address_splitter(ent[3])
                     record["city"] = location[0]
@@ -111,6 +136,7 @@ def parse_txt(fp):
 
 
 def txt_address_splitter(text):
+    """splits a given location string and returns a list"""
     city, _ = text.split(", ")
     _ = _.split()
     zipcode = _[-1]
@@ -142,7 +168,6 @@ def main():
         elif ext not in [".xml", ".tsv", ".txt"]:
             invalids.append(
                 [fp, "Unsupported file extension; use --help for details."])
-
     if invalids:
         for i in invalids:
             print(f"Invalid input file {i[0]}: {i[1]}", file=sys.stderr)
@@ -159,6 +184,7 @@ def main():
         elif ext == ".txt":
             records.extend(parse_txt(fp))
 
+    # sort and dump as json
     records.sort(key=lambda record: record["zip"])
     output = json.dumps(records, indent=1)
     print(output)
