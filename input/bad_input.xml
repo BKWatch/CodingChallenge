@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+    <ENT>
+        <NAME>John Doe</NAME>
+        <!-- COMPANY tag is missing -->
+        <STREET>1234 Elm Street</STREET>
+        <CITY>Springfield</CITY>
+        <!-- STATE tag is misspelled as STAT -->
+        <STAT>IL</STAT>
+        <POSTAL_CODE>62704</POSTAL_CODE>
+    </ENT>
+</ROOT>
