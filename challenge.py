@@ -259,7 +259,7 @@ def main():
     # Sort entities by zip code
     all_entities = sorted(all_entities, key=lambda x: x["zip"])
 
-    json_output = json.dumps(all_entities, indent=4)
+    json_output = json.dumps(all_entities, indent=2)
     print(json_output)
     sys.exit(0)
 
