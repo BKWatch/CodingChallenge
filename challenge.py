@@ -218,8 +218,6 @@ def main():
         help="List of file paths (txt, xml, tsv)",
     )
     args = parser.parse_args()
-    print("Validated file paths:", args.files)
-
     all_entities = []
     for file in args.files:
         _, ext = os.path.splitext(file)
