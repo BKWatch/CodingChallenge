@@ -41,13 +41,9 @@ def parse_xml(file_path):
             return entity_data
 
         fields = ["NAME", "COMPANY", "STREET", "CITY", "STATE", "POSTAL_CODE"]
-
         for entity in root.findall(".//ENT"):
             entity_data = extract_entity_data(entity, fields)
-            # remove all empty fields
-            entity_data = {k: v for k, v in entity_data.items() if v is not None}
             entities.append(entity_data)
-
         return entities
     except ET.ParseError as e:
         print(f"Error parsing XML file: {e}", file=sys.stderr)
