@@ -4,6 +4,7 @@ import os
 
 class FileTypeChecker(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
+        _ = option_string
         valid_extensions = (".txt", ".xml", ".tsv")
         for value in values:
             ext = os.path.splitext(value)[1]
