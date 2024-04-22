@@ -59,6 +59,7 @@ def parse_xml(file_path):
             "STREET_2",
             "STREET_3",
             "CITY",
+            "COUNTY",
             "STATE",
             "POSTAL_CODE",
         ]
