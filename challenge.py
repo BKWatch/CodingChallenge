@@ -97,7 +97,7 @@ def parse_xml(file_path):
         sys.exit(1)
 
 
-def split_address(address):
+def text_split_address(address):
     city, state_and_zip = map(str.strip, address.strip().split(","))
     match = re.search(r"\d", state_and_zip)
     if match:
@@ -118,9 +118,9 @@ def text_extract_entity_data(entry):
     entity_data["street"] = entry[1].strip()
     if entry_contains_county:
         entity_data["county"] = entry[2].replace("COUNTY", "").strip()
-        city, state, zip = split_address(entry[3])
+        city, state, zip = text_split_address(entry[3])
     else:
-        city, state, zip = split_address(entry[2])
+        city, state, zip = text_split_address(entry[2])
     entity_data["city"] = city
     entity_data["state"] = state
     entity_data["zip"] = zip
