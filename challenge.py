@@ -65,7 +65,7 @@ def xml_extract_entity_data(entity, fields):
         if "street" in field.lower():
             if value:
                 street.append(value)
-        if value != "" and value is not None:
+        if value and value is not None:
             entity_data[assigned_field] = value if value else None
 
     entity_data["street"] = ", ".join(street)
@@ -145,6 +145,44 @@ def parse_txt(file_path):
     except Exception as e:
         print(f"Error parsing TXT file: {e}", file=sys.stderr)
         sys.exit(1)
+
+
+def tsv_extract_entity_data(row):
+    entity = create_empty_entity()
+
+    is_organization = row["first"].strip() == ""
+    if is_organization:
+        if row["organization"].strip() != "N/A":
+            entity["organization"] = row["organization"].strip()
+        else:
+            entity["organization"] = row["last"].strip()
+    else:
+        name = []
+        name.append(row["first"].strip())
+        middle_name = row["middle"].strip()
+        if middle_name != "N/M/N" and middle_name:
+            name.append(middle_name)
+        name.append(row["last"].strip())
+        entity["name"] = " ".join(name).replace(",", "")
+
+    county = row["county"].strip()
+    if county:
+        entity["county"] = county
+    entity["street"] = row["address"].strip()
+    entity["city"] = row["city"].strip()
+    entity["state"] = row["state"].strip()
+    entity["zip"] = clean_zip(row["zip"].strip() + "-" + row["zip4"].strip())
+    entity = clean_none_values(entity)
+    return entity
+
+
+def parse_tsv(file_path):
+    with open(file_path, mode="r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file, delimiter="\t")
+        entities = []
+        for row in reader:
+            entities.append(tsv_extract_entity_data(row))
+        return entities
 
 
 def main():
