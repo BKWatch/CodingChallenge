@@ -176,9 +176,27 @@ def tsv_extract_entity_data(row):
     return entity
 
 
+def tsv_validate_structure(reader):
+    fields = [
+        "first",
+        "middle",
+        "last",
+        "organization",
+        "address",
+        "city",
+        "state",
+        "county",
+        "zip",
+        "zip4",
+    ]
+    if not all(field in reader.fieldnames for field in fields):
+        raise ValueError("TSV file does not contain all required fields")
+
+
 def parse_tsv(file_path):
     with open(file_path, mode="r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter="\t")
+        tsv_validate_structure(reader)
         entities = []
         for row in reader:
             entities.append(tsv_extract_entity_data(row))
