@@ -186,7 +186,7 @@ def main():
 
     # sort and dump as json
     records.sort(key=lambda record: record["zip"])
-    output = json.dumps(records, indent=1)
+    output = json.dumps(records, indent=2)
     print(output)
     sys.exit(0)
 
