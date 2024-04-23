@@ -6,7 +6,7 @@ concatenates them into a single JSON array.
 import os
 import sys
 import argparse
-from typing import List, Dict, Tuple, Union
+from typing import List, Dict
 
 import xml.etree.ElementTree as ET
 import csv
@@ -75,7 +75,7 @@ def check_xml_meta_and_entity(event: str, elem: ET.Element, file_path: str) -> N
                     f'but got {event}.')
 
 
-def handle_xml_ent_zip(ent_dict: Dict[str, str], key: str, value: str) -> None:
+def handle_xml_ent_zip(ent_dict: Dict[str, str], value: str) -> None:
     """
     Handle the ZIP code element within the 'ENT' element.
 
@@ -91,12 +91,11 @@ def handle_xml_ent_zip(ent_dict: Dict[str, str], key: str, value: str) -> None:
         raise ValueError(f'Invalid postal code format: {value}') from e
 
 
-def handle_xml_ent_streets(ent_dict: Dict[str, str], key: str, value: str) -> None:
+def handle_xml_ent_streets(ent_dict: Dict[str, str], value: str) -> None:
     """
     Handle the street elements within the 'ENT' element.
 
     :param ent_dict: The dictionary to store the parsed 'ENT' data.
-    :param key: The key of the element.
     :param value: The value of the element.
     """
     if value != '':
@@ -114,15 +113,13 @@ def handle_xml_ent_elem(ent_dict: Dict[str, str], elem: ET.Element) -> None:
     :param elem: The 'ENT' element.
     :raises ValueError: If an unexpected element is found or a required element is missing or empty.
     """
-    required_elements = ['NAME', 'COMPANY', 'STREET', 'STREET_2', 'STREET_3', 'CITY', 'STATE', 'COUNTRY', 'POSTAL_CODE']
-
     key = elem.tag.lower()
     value = elem.text.strip().title() if elem.text else ''
     if value.strip():
         if key == 'postal_code':
-            handle_xml_ent_zip(ent_dict=ent_dict, key=key, value=value)
+            handle_xml_ent_zip(ent_dict=ent_dict, value=value)
         elif key == 'street_2' or key == 'street_3':
-            handle_xml_ent_streets(ent_dict=ent_dict, key=key, value=value)
+            handle_xml_ent_streets(ent_dict=ent_dict, value=value)
         elif key == 'state':
             if len(value) == 2:
                 ent_dict[key] = value.upper()
@@ -134,7 +131,7 @@ def handle_xml_ent_elem(ent_dict: Dict[str, str], elem: ET.Element) -> None:
             ent_dict[key] = value
 
 
-def handle_xml(file_path: str, data: List[Dict[str, str]]) -> bool:
+def handle_xml(file_path: str, data: List[Dict[str, str]]) -> None:
     """
     Handle the XML file and extract the required data.
 
