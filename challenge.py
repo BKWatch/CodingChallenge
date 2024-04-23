@@ -376,7 +376,7 @@ def main() -> None:
             sys.exit(0)
 
     data.sort(reverse=True, key=lambda data_dict: data_dict['zip'])
-    json.dump(data, sys.stdout, indent=2)
+    json.dump(data, sys.stdout, indent=4)
     sys.exit(1)
 
 
