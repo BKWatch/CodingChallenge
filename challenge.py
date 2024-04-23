@@ -41,8 +41,17 @@ def help():
     sys.exit(0)
 
 def process_xml(filepath):
-    tree = ET.parse(filepath)
+    try:
+        tree = ET.parse(filepath)
+    except ET.ParseError:
+        sys.stderr.write("Unable to parse XML file.")
+        sys.exit(1)
+        
     root = tree.getroot()
+
+    if root.tag != 'EXPORT':
+        sys.stderr.write("Error: Invalid XML format. Root tag must be 'EXPORT'.")
+        sys.exit(1)
 
     data = []
 
@@ -54,9 +63,13 @@ def process_xml(filepath):
         street_3 = ent.find('STREET_3').text.strip()
         city = ent.find('CITY').text.strip()
         state = ent.find('STATE').text.strip()
-        postal_code = ent.find('POSTAL_CODE').text.strip().split(' - ')[0]
+        zip_code = ent.find('POSTAL_CODE').text.strip().split(' - ')[0]
 
         street = ", ".join([street_1, street_2, street_3])
+
+        if not (name and street and city and state and zip_code):
+            sys.stderr.write("Error: Invalid XML format. Missing required fields.")
+            sys.exit(1)
 
         person_data = {
             'name': name,
@@ -64,7 +77,7 @@ def process_xml(filepath):
             'street': street,
             'city': city,
             'state': state,
-            'zip': postal_code
+            'zip': zip_code
         }
         data.append(person_data)
 
@@ -88,8 +101,12 @@ def process_tsv(filepath):
             zip_code = row['zip']
             zip4 = row['zip4']
 
-            # Combining zip_code and zip4 with a hyphen
             full_zip = f"{zip_code}-{zip4}" if zip4 else zip_code
+
+
+            if not (name and address and city and state and zip_code):
+                sys.stderr.write("Error: Invalid TSV format. Missing required fields.")
+                sys.exit(1)
 
             # Constructing data dictionary
             person_data = {
@@ -131,6 +148,9 @@ def process_txt(filename):
                     entry['zip'] = line.split(',')[2].strip()
             else:
                 if entry: # Don't include empty lines at the start as blank dictionaries.
+                    if not (entry['name'] and entry['street'] and entry['city'] and entry['state'] and entry['zip_code']):
+                        sys.stderr.write("Error: Invalid XML format. Missing required fields.")
+                        sys.exit(1)
                     data.append(entry)
                 entry = {}
     return data
