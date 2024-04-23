@@ -167,7 +167,7 @@ def handle_xml(file_path: str, data: List[Dict[str, str]]) -> None:
             error_message = str(e)
 
         sys.stderr.write(error_message)
-        sys.exit(0)
+        sys.exit(1)
 
 
 def get_tsv_name(first: str, middle: str, last: str) -> str:
@@ -220,13 +220,13 @@ def handle_tsv(file_path: str, data: List[Dict[str, str]]) -> None:
                 if 'name' not in line_dict and 'organization' not in line_dict:
                     raise ValueError(f'Error: {file_path} has entity with missing name and organization.')
 
-                line_dict['street'] = street
-                line_dict['city'] = city
+                line_dict['street'] = street.title()
+                line_dict['city'] = city.title()
 
                 if county:
-                    line_dict['county'] = county
+                    line_dict['county'] = county.title()
 
-                line_dict['state'] = state
+                line_dict['state'] = state.upper() if len(state.strip()) == 2 else state.title()
                 if not zip_code or not zip_code.isdigit() or len(zip_code) != 5:
                     raise ValueError(f'Error: {file_path} has an invalid ZIP code: {zip_code}')
                 line_dict['zip'] = format_zip_code(zip_code, zip_4)
@@ -234,7 +234,7 @@ def handle_tsv(file_path: str, data: List[Dict[str, str]]) -> None:
                 data.append(line_dict)
     except (ValueError, IOError) as e:
         sys.stderr.write(str(e) + '\n')
-        sys.exit(0)
+        sys.exit(1)
 
 
 def validate_txt_dict(txt_dict: Dict[str, str], required_fields: List[str], file_path: str) -> bool:
@@ -299,7 +299,7 @@ def handle_txt(file_path: str, data: List[Dict[str, str]]) -> None:
                 data.append(txt_dict)
     except (ValueError, IOError) as e:
         sys.stderr.write(str(e) + '\n')
-        sys.exit(0)
+        sys.exit(1)
 
 
 def get_zip(data_dict: Dict[str, str]) -> str:
@@ -335,11 +335,11 @@ def main() -> None:
         else:
             _, extension = os.path.splitext(file_name)
             sys.stderr.write(f'Error: {extension} files not supported.\n')
-            sys.exit(0)
+            sys.exit(1)
 
     data.sort(reverse=True, key=lambda data_dict: data_dict['zip'])
     json.dump(data, sys.stdout, indent=4)
-    sys.exit(1)
+    sys.exit(0)
 
 
 if __name__ == '__main__':
