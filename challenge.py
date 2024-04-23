@@ -321,16 +321,16 @@ def main() -> None:
         description='Reads files in XML, TSV, and TXT formats,'
                     'transforms and concatenates them into a single JSON array.'
     )
-    input_dir = 'input'
+    parser.add_argument('files', nargs='+', help='List of files to process')
+    args = parser.parse_args()
     data = []
 
-    for file_name in os.listdir(input_dir):
-        file_path = os.path.join(input_dir, file_name)
-        if file_name.endswith('.xml'):
+    for file_path in args.files:
+        if file_path.endswith('.xml'):
             handle_xml(file_path, data)
-        elif file_name.endswith('.tsv'):
+        elif file_path.endswith('.tsv'):
             handle_tsv(file_path, data)
-        elif file_name.endswith('.txt'):
+        elif file_path.endswith('.txt'):
             handle_txt(file_path, data)
         else:
             _, extension = os.path.splitext(file_name)
