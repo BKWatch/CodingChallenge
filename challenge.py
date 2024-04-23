@@ -117,24 +117,21 @@ def handle_xml_ent_elem(ent_dict: Dict[str, str], elem: ET.Element) -> None:
     required_elements = ['NAME', 'COMPANY', 'STREET', 'STREET_2', 'STREET_3', 'CITY', 'STATE', 'COUNTRY', 'POSTAL_CODE']
 
     key = elem.tag.lower()
-    value = elem.text.strip().title() if child.text else None
-
-    if key == 'postal_code':
-        handle_xml_ent_zip(ent_dict=ent_dict, key=key, value=value)
-    if key == 'street_2' or key == 'street_3':
-        handle_xml_ent_streets(ent_dict=ent_dict, key=key, value=value)
-    if key == 'state':
-        if len(value) == 2:
-            ent_dict[key] = value.upper()
-        ent_dict[key] = value
-    if key == 'company':
-        ent_dict['organization'] = value
-    elif key != 'country' and value:
-        ent_dict[key] = value
-
-    for element in required_elements:
-        if element.lower() not in ent_dict:
-            raise ValueError(f'Required element "{element}" is missing within <ENT>')
+    value = elem.text.strip().title() if elem.text else ''
+    if value.strip():
+        if key == 'postal_code':
+            handle_xml_ent_zip(ent_dict=ent_dict, key=key, value=value)
+        elif key == 'street_2' or key == 'street_3':
+            handle_xml_ent_streets(ent_dict=ent_dict, key=key, value=value)
+        elif key == 'state':
+            if len(value) == 2:
+                ent_dict[key] = value.upper()
+            else:
+                ent_dict[key] = value.strip()
+        elif key == 'company':
+            ent_dict['organization'] = value
+        elif key != 'country' and value:
+            ent_dict[key] = value
 
 
 def handle_xml(file_path: str, data: List[Dict[str, str]]) -> bool:
@@ -174,38 +171,6 @@ def handle_xml(file_path: str, data: List[Dict[str, str]]) -> bool:
 
         sys.stderr.write(error_message)
         sys.exit(0)
-
-
-def handle_xml_ent_elem(ent_dict: Dict[str, str], elem: ET.Element) -> None:
-    """
-    Handle the 'ENT' element within the XML file.
-
-    :param ent_dict: The dictionary to store the parsed 'ENT' data.
-    :param elem: The 'ENT' element.
-    :raises ValueError: If an unexpected element is found or a required element is missing.
-    """
-    required_elements = {'NAME', 'COMPANY', 'STREET', 'STREET_2', 'STREET_3', 'CITY', 'STATE', 'COUNTRY', 'POSTAL_CODE'}
-
-    for child in elem:
-        if child.tag not in required_elements:
-            raise ValueError(f'Unexpected element "{child.tag}" found within <ENT>')
-
-        key = child.tag.lower()
-        value = child.text.strip().title() if child.text.strip() else ''
-        if key == 'postal_code':
-            handle_xml_ent_zip(ent_dict=ent_dict, key=key, value=value)
-        elif key in ('street', 'street_2', 'street_3'):
-            handle_xml_ent_streets(ent_dict=ent_dict, key=key, value=value)
-        elif key == 'state':
-            if len(value) == 2:
-                ent_dict[key] = value.upper()
-            else:
-                ent_dict[key] = value
-        elif key == 'company':
-            ent_dict['organization'] = value
-        elif key != 'country' and value != '':
-            ent_dict[key] = value
-
 
 
 def get_tsv_name(first: str, middle: str, last: str) -> str:
@@ -313,7 +278,7 @@ def handle_txt(file_path: str, data: List[Dict[str, str]]) -> None:
                         data.append(txt_dict)
                         txt_dict = {}
                 elif line[0].isdigit() or line.startswith('p.o.'):
-                    txt_dict['street'] = line
+                    txt_dict['street'] = line.title()
                 elif 'county' in line:
                     txt_dict['county'] = line.title().rstrip(' county')
                 elif line[-1].isdigit() or line[-1] == '-':
@@ -326,7 +291,7 @@ def handle_txt(file_path: str, data: List[Dict[str, str]]) -> None:
 
                     txt_dict.update({
                         'city': city.title(),
-                        'state': state if len(state) == 2 else state.title(),
+                        'state': state.strip().upper() if len(state.strip()) == 2 else state.strip().title(),
                         'zip': format_zip_code(zip_code, zip_4)
                     })
                 else:
