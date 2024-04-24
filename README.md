@@ -1,5 +1,7 @@
 # BankruptcyWatch Coding Challenge
 
+# NOTE: The company only has 1 star on Indeed and passes up on ideal candidates with the EXACT requirements for the job. NOBODY SHOULD WORK FOR THEM!
+
 ## Goal
 
 The BankruptcyWatch Coding Challenge is designed to help us locate experienced
