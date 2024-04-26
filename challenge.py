@@ -4,7 +4,8 @@ import argparse
 import csv
 import xml.etree.ElementTree as ET
 
-def process_xml(filepath):
+
+def process_xml(filepath: str) -> list:
 	try:
 		with open(filepath, 'r') as f:
 			data = f.read()
@@ -35,7 +36,7 @@ def process_xml(filepath):
 		if name:
 			entry['name'] = name
 		elif company:
-			entry['company'] = company
+			entry['organization'] = company
 
 		entry['street'] = street
 		entry['city'] = city
@@ -45,40 +46,43 @@ def process_xml(filepath):
 
 	return results
 
-def process_tsv(filepath):
+
+def process_tsv(filepath: str) -> list:
 	try:
+		results = []
 		with open(filepath, 'r', newline='') as file:
 			reader = csv.DictReader(file, delimiter='\t')
+			for row in reader:
+				entry = {}
+				if row['organization'] != 'N/A':
+					entry['organization'] = row['organization']
+				else:
+					name  = ' '.join(
+						[x for x in [row['first'], row['middle'], row['last']] if x not in [None, 'N/A', 'N/M/N']]
+					)
+					if any(x in name.lower() for x in [' llc', ' inc', ' ltd']):
+						entry['organization'] = name
+					else:
+						entry['name'] = name
+
+				entry['street'] = row['address']
+				entry['city'] = row['city']
+				entry['state'] = row['state']
+
+				if row['county']:
+					entry['county'] = row['county']
+
+				entry['zip'] = f"{row['zip'].strip()}-{row['zip4'].strip()}" if row['zip4'] else row['zip'].strip()
+
+				entry = {k: v.strip() for k, v in entry.items() if v}
+				results.append(entry)
+		return results
 	except Exception as e:
-		sys.stderr.write(f"Error reading TSV file: {e}\n")
-		sys.exit(1)
+			sys.stderr.write(f"Error reading TSV file: {e}\n")
+			sys.exit(1)
 
-	results = []
-	with open(filepath, 'r', newline='') as file:
-		reader = csv.DictReader(file, delimiter='\t')
-		for row in reader:
-			entry = {}
 
-			if row['organization'] != 'N/A':
-				entry['organization'] = row['organization']
-			else:
-				entry['name'] = ' '.join(filter(lambda x: x not in [None, 'N/A', 'N/M/N'], [row['first'], row['middle'], row['last']]))
-
-			entry['street'] = row['address']
-			entry['city'] = row['city']
-			entry['state'] = row['state']
-
-			if row['county']:
-				entry['county'] = row['county']
-
-			entry['zip'] = f"{row['zip'].strip()}-{row['zip4'].strip()}" if row['zip4'] else row['zip'].strip()
-
-			entry = {k: v.strip() for k, v in entry.items() if v}
-			results.append(entry)
-
-	return results
-
-def process_txt(file_path):
+def process_txt(file_path: str) -> list:
 	try:
 		with open(file_path, 'r') as file:
 			content = file.read().strip()
@@ -114,13 +118,11 @@ def process_txt(file_path):
 
 	return results
 
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='process an address file.')
-	parser.add_argument('filepath', type=str, help='path to the input file.')
-	args = parser.parse_args()
 
-	filepath = args.filepath
-	ext = filepath.split('.')[-1]
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser(description='process multiple address files.')
+	parser.add_argument('filepaths', type=str, nargs='+', help='paths to the input files')
+	args = parser.parse_args()
 
 	processing_map = {
 		'xml': process_xml,
@@ -128,15 +130,25 @@ if __name__ == '__main__':
 		'txt': process_txt
 	}
 
-	if ext not in processing_map:
-		sys.stderr.write(f"unsupported file extension: {ext}\n")
-		sys.exit(1)
+	for filepath in args.filepaths:
+		filepath_parts = filepath.split('/')
+		data_dir = '/'.join(filepath_parts[:-1])
+		filename = filepath_parts[-1]
+		filename_parts = filename.split('.')
+		ext = filename_parts[-1]
 
-	try:
-		processing_func = processing_map[ext]
-		results = processing_func(filepath)
-		print(json.dumps(results, indent=4))
-		sys.exit(0)
-	except Exception as e:
-		sys.stderr.write(f"error processing file: {e}\n")
-		sys.exit(1)
+		if ext not in processing_map:
+			sys.stderr.write(f"unsupported file extension: {ext}\n")
+			continue
+
+		try:
+			processing_func = processing_map[ext]
+			results = processing_func(filepath)
+			output_path = f"{data_dir}/{''.join(filename_parts)}_processed.json"
+			with open(output_path, 'w') as f:
+				f.write(json.dumps(results, indent=4))
+			print(json.dumps(results, indent=4))
+		except Exception as e:
+			sys.stderr.write(f"error processing file {filepath}: {e}\n")
+
+	sys.exit(0)
