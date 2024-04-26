@@ -5,11 +5,11 @@ from pathlib import Path
 import json
 
 
-class parserChallenge:
+class Challenge:
     """Class to parse the text, tsv, and xml files.
     Attributes: See each function documentation
     Example:
-    terminal input: "python challenge.py Data/input1.xml  Data/input2.tsv Data/input3.txt"
+    terminal input: "python challenge.py input/input1.xml  input/input2.tsv input/input3.txt"
     expected output:
                     [
                     {
@@ -26,7 +26,7 @@ class parserChallenge:
                         "county": null,
                         "state": "Illinois",
                         "zip": "60419"
-                    }, ..............
+                    }, ..............]
                     
     """
     def __init__(self):
@@ -36,7 +36,7 @@ class parserChallenge:
             self.error_list: list = []
             self.results: list = []
 
-    def get_file_paths(self, filepaths):
+    def get_file_paths(self, filepaths)->None:
         """Function to get the file paths of the given file type. The file type can be text, tsv, or xml.
         Args:
             file_paths (list): List of file paths.
@@ -65,7 +65,7 @@ class parserChallenge:
         with open(filepath, 'r') as f:
             return f.read()
               
-    def parse_txt(self)-> None:
+    def parse_txt(self)-> list[dict]:
         """Function to parse the text files."""
         for filep in self.text_file_paths:
             file = self.load_files(Path(filep))
@@ -108,9 +108,8 @@ class parserChallenge:
                 except Exception as e:
                     self.error_list.append(lines[i])
                     print(f'Failed with the follow error {e}', file=sys.stderr)
-                
 
-    def parse_tsv(self)-> None:
+    def parse_tsv(self)-> list[dict]:
         """Function to parse the tsv files."""
         for file in self.tsv_file_paths:
             with open(file, 'r') as f:
@@ -122,11 +121,18 @@ class parserChallenge:
                         if not lines[0]:
                             while not lines[0]:
                                 lines.pop(0)
-                            organization = lines[0]
-                            street = lines[2]
-                            city = lines[3]
-                            state = lines[4]
-                            zip = lines[5] if not lines[6] else lines[5] + '-' + lines[6]
+                            if 'N/A' in lines:
+                                organization = lines[0]
+                                street = lines[2]
+                                city = lines[3]
+                                state = lines[4]
+                                zip = lines[6] if not lines[7] else lines[6] + '-' + lines[7]
+                            else:
+                                organization = lines[0]
+                                street = lines[1]
+                                city = lines[2]
+                                state = lines[3]
+                                zip = lines[5] if not lines[6] else lines[5] + '-' + lines[6]
 
                             def create_current_org_dict(organization=None, street=None, city=None, state=None, zip=None)-> dict:
                                 """Helper function to create dictionaries with the above information. - Organizations"""
@@ -165,7 +171,7 @@ class parserChallenge:
                         self.error_list.append(lines)
                         print(f'Failed with the follow error {e}', file=sys.stderr)
     
-    def parse_xml_file(self):
+    def parse_xml_file(self) -> list[dict]:
         """Function to parse the XML file."""
         for file in self.xml_file_paths:
             tree = ET.parse(file)
@@ -226,13 +232,18 @@ class parserChallenge:
             self.parse_tsv()
             print("TSV files parsed")
             self.parse_xml_file()
+            print("XML files parsed")
             parsed = json.dumps(self.results, indent=4)
+            print("Process complete \nResults: ")
             print(parsed)
+            errors = json.dumps(self.error_list, indent=4)
+            print(f"Parsed Record Errors: {len(self.error_list)}")
             exit(0)
+            return (parsed, errors)
         except Exception as e:
             print(f'Failed with the follow error {e}', file=sys.stderr)
             exit(1)
             
 if __name__ == "__main__":
-    parser = parserChallenge()
-    parser.main()
+    parser = Challenge()
+    results, errors = parser.main()
