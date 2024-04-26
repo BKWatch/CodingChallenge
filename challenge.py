@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-import pandas
+import csv
 import argparse
 import xml.etree.ElementTree as ET
 
@@ -39,37 +39,38 @@ def parse_json_from_xml(file):
     return output
 
 def parse_json_from_tsv(file):
-    data = pandas.read_csv(file, sep='\t')
     output = []
-    for index, row in data.iterrows():
-        entity_dict = {}
+    with open(file, 'r', newline='') as f:
+        reader = csv.DictReader(f, delimiter='\t')
 
-        if type(row['first']) != float:
-            entity_dict['name'] = row['first']
-        if type(row['middle']) != float and row['middle'] != 'N/M/N':
-            entity_dict['name'] = entity_dict.get('name', '') + ' ' + row['middle']
-            entity_dict['name'] = entity_dict['name'].strip()
-        if type(row['last']) != float:
-            entity_dict['name'] =  entity_dict.get('name', '') + ' ' + row['last']
-            entity_dict['name'] = entity_dict['name'].strip()
-        elif type(row['organization']) != float:
-            entity_dict['company'] = row['organization']
+        for row in reader:
+            entity_dict = {}
 
-        if type(row['address']) != float:
-            entity_dict['street'] = row['address']
-        if type(row['city']) != float:
-            entity_dict['city'] = row['city']
-        if type(row['county']) != float:
-            entity_dict['count'] = row['county']
-        if type(row['state']) != float:
-            entity_dict['state'] = row['state']
-        if type(row['zip']) != float:
-            entity_dict['zip'] = row['zip']
-            if type(row['zip4']) != float:
-                entity_dict['zip'] += '-' + row['zip4']
+            if row['first'] and row['first'] != 'NaN':
+                entity_dict['name'] = row['first']
+            if row.get('middle') and row['middle'] != 'NaN' and row['middle'] != 'N/M/N':
+                entity_dict['name'] = entity_dict.get('name', '') + ' ' + row['middle'].strip()
+            if row.get('last') and row['last'] != 'NaN':
+                entity_dict['name'] = entity_dict.get('name', '') + ' ' + row['last'].strip()
+            elif row.get('organization') and row['organization'] != 'NaN':
+                entity_dict['company'] = row['organization']
 
-        output.append(entity_dict)
-    
+            if row.get('address') and row['address'] != 'NaN':
+                entity_dict['street'] = row['address']
+            if row.get('city') and row['city'] != 'NaN':
+                entity_dict['city'] = row['city']
+            if row.get('county') and row['county'] != 'NaN':
+                entity_dict['count'] = row['county']
+            if row.get('state') and row['state'] != 'NaN':
+                entity_dict['state'] = row['state']
+            if row.get('zip') and row['zip'] != 'NaN':
+                entity_dict['zip'] = row['zip']
+                if row.get('zip4') and row['zip4'] != 'NaN':
+                    entity_dict['zip'] += '-' + row['zip4']
+
+            if entity_dict:
+                output.append(entity_dict)
+
     return output
         
 
@@ -109,31 +110,28 @@ def parse_json_from_txt(file):
 
     return output
 
-def parse_json_from_file(file):
 
-    if not os.path.isfile(file):
-        print('Path to file does not exist: ', file)
-        return 1
-    
-    ext = os.path.splitext(file)[-1].lower()
-    output = None
-
-    if ext == '.xml':
-        output = parse_json_from_xml(file)
-    elif ext == '.tsv':
-        output = parse_json_from_tsv(file)
-    elif ext == '.txt':
-        output = parse_json_from_txt(file)
-    
-    output = sorted(output, key = lambda x:x['zip'])
-    print(json.dumps(output, indent=4))
-
-    return 0
-
-
-
-parser = argparse.ArgumentParser("challenges")
-parser.add_argument("file", help="A file with the extensions [.xml, .tsv, .txt] will be parse and prints a pretty-formatted JSON. Returns 0 on completion and 1 upon error.", type=str)
+parser = argparse.ArgumentParser(description="Parse multiple files and print pretty-formatted JSON.")
+parser.add_argument("files", nargs='+', help="A list of files with the extensions [.xml, .tsv, .txt] will be parsed and prints pretty-formatted JSON. Returns 0 on completion and 1 upon error.", type=str)
 args = parser.parse_args()
 
-output = parse_json_from_file(args.file)
+try:
+    output = []
+    for file in args.files:
+        if not os.path.isfile(file):
+            print('Path to file does not exist: ', file)
+            exit(1)
+        ext = os.path.splitext(file)[-1].lower()
+        if ext == '.xml':
+            output += parse_json_from_xml(file)
+        elif ext == '.tsv':
+            output += parse_json_from_tsv(file)
+        elif ext == '.txt':
+            output += parse_json_from_txt(file)
+
+    output = sorted(output, key = lambda x:x['zip'])
+    print(json.dumps(output, indent=4))
+    exit_code = 0
+except Exception as e:
+    print(f"An error occurred: {e}")
+    exit_code = 1
