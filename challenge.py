@@ -4,18 +4,17 @@ import os
 import csv
 import xml.etree.ElementTree as ET
 import argparse
-import spacy
-
-
-nlp = spacy.load('en_core_web_sm')
+import re
 
 def is_person_or_organization(text):
-    doc = nlp(text)
-    for ent in doc.ents:
-        if ent.label_ == 'PERSON':
-            return 1
-        elif ent.label_ == 'ORG':
-            return 2
+    person_keywords = ["Mr", "Mrs", "Ms","Dr", "Sr", "Jr"]
+    organization_keywords = ["III", "Inc", "Corporation", "Company", "Ltd", "Group", "LLC", "Association"]
+    pattern_organization = rf"\b({'|'.join(organization_keywords)})\b"
+    pattern_person = rf"\b({'|'.join(person_keywords)})\b"
+    if re.search(pattern_person, text, re.IGNORECASE) is not None:
+        return 1
+    if re.search(pattern_organization, text, re.IGNORECASE) is not None:
+        return 2
     return 0
 
 def parse_xml(file_path):
