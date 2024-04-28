@@ -1,5 +1,31 @@
 [
   {
+    "name": "",
+    "organization": "CT TSA Sales, LLC",
+    "street": "102 Wolcott Road, Ste C",
+    "city": "Wolcott",
+    "state": "CT",
+    "county": "",
+    "zip": "06716 - 2671"
+  },
+  {
+    "name": "",
+    "organization": "Frontier Communications of Lakewood, LLC",
+    "street": "401 Merritt 7",
+    "city": "Norwalk",
+    "state": "CT",
+    "zip": "06851 - 1000"
+  },
+  {
+    "name": "",
+    "organization": "Cervantes, Inc.",
+    "street": "24 North Avenue East",
+    "city": "Cranford",
+    "state": "NJ",
+    "county": "U.S.A.",
+    "zip": "07016"
+  },
+  {
     "name": "Maria J Mendoza",
     "organization": "",
     "street": "26 Dewitt Ave.",
@@ -7,6 +33,33 @@
     "county": "",
     "state": "Jersey",
     "zip": "07109-"
+  },
+  {
+    "name": "",
+    "organization": "Hajjar Medical Office Building of Jersey City, LLC",
+    "street": "631 Grand Street",
+    "city": "Jersey City",
+    "state": "New Jersey",
+    "county": "United States",
+    "zip": "07304"
+  },
+  {
+    "name": "",
+    "organization": "OneSource Service, Inc.",
+    "street": "135 West 20th StreetSuite 201",
+    "city": "New York",
+    "state": "NY",
+    "county": "U.S.",
+    "zip": "10011 - 3648"
+  },
+  {
+    "name": "",
+    "organization": "Tres Mosqueteros Corp. d/b/a La Pulperia de Tito",
+    "street": "371 West 46th Street",
+    "city": "New York",
+    "state": "NY",
+    "county": "U.S.",
+    "zip": "10036"
   },
   {
     "name": "Bob Ring",
@@ -18,6 +71,15 @@
     "zip": "10314"
   },
   {
+    "name": "",
+    "organization": "Pie Lady & Son Inc.",
+    "street": "10 Rockland Place",
+    "city": "Nyack",
+    "state": "NY",
+    "county": "",
+    "zip": "10960"
+  },
+  {
     "name": "James Joseph Moley,Jr.",
     "organization": "",
     "street": "136 Third Street",
@@ -25,6 +87,31 @@
     "county": "",
     "state": "NY",
     "zip": "11780"
+  },
+  {
+    "name": "Darleen Harding Wheeler",
+    "organization": "",
+    "street": "803 Craig Street",
+    "city": "Schenectady",
+    "state": "NY",
+    "county": "US",
+    "zip": "12307"
+  },
+  {
+    "name": "Abraham  Franks",
+    "organization": "",
+    "street": "1303 Fifth Street",
+    "city": "Hiller",
+    "state": "PA",
+    "zip": "15444 - 9733"
+  },
+  {
+    "name": "Alastair T. Crawford",
+    "organization": "",
+    "street": "115 West Front Street",
+    "city": "Oil City",
+    "state": "PA",
+    "zip": "16301"
   },
   {
     "name": "David Allen Weidenhammer,Jr.",
@@ -45,6 +132,40 @@
     "zip": "19709-"
   },
   {
+    "name": "CEDRIC WILKERSON",
+    "organization": "",
+    "street": "2103 Washington Overlook Drive",
+    "city": "Fort Washington",
+    "state": "Maryland",
+    "county": "",
+    "zip": "20744"
+  },
+  {
+    "name": "Rhodes Taylor Carter",
+    "organization": "",
+    "street": "3321 Huntley Square Drive APT A1",
+    "city": "Temple Hills",
+    "state": "MD",
+    "zip": "20748 - 6213"
+  },
+  {
+    "name": "",
+    "organization": "WD-I Associates, LLC",
+    "street": "1055 Laskin Road, Suite 100",
+    "city": "Virginia Beach",
+    "state": "VA",
+    "zip": "23451 - 6369"
+  },
+  {
+    "name": "Rayfield Lloyd ,Jr.",
+    "organization": "",
+    "street": "6810 CHARITY WAY",
+    "city": "Leland",
+    "state": "North Carolina",
+    "county": "U.S.",
+    "zip": "28451 - 4501"
+  },
+  {
     "name": "Wanda Kay Hood",
     "organization": "",
     "street": "583 Cayce Olin Dr",
@@ -52,6 +173,40 @@
     "county": "YORK COUNTY",
     "state": "SC",
     "zip": "29730-8976"
+  },
+  {
+    "name": "Binh  Lam",
+    "organization": "",
+    "street": "75 Chimney Walk Court",
+    "city": "Suwanee",
+    "state": "GA",
+    "zip": "30024"
+  },
+  {
+    "name": "",
+    "organization": "Medi Caregivers LLC",
+    "street": "1172 Old Salem Rd",
+    "city": "Conyers",
+    "state": "Georgia",
+    "county": "",
+    "zip": "30094"
+  },
+  {
+    "name": "Ronald Dana Robinson",
+    "organization": "",
+    "street": "4491 High Gate Drive, N.W.",
+    "city": "Acworth",
+    "state": "GA",
+    "county": "",
+    "zip": "30101"
+  },
+  {
+    "name": "",
+    "organization": "Spring Business Group LLC",
+    "street": "204 Rockville Springs Dr.",
+    "city": "Eatonton",
+    "state": "GA",
+    "zip": "30124 - 8219"
   },
   {
     "name": "Charity Lynn Patterson",
@@ -70,6 +225,15 @@
     "county": "CLAYTON COUNTY",
     "state": "Georgia",
     "zip": "30273"
+  },
+  {
+    "name": "Fernanda Camacho",
+    "organization": "",
+    "street": "155 Joliet Way",
+    "city": "Dalton",
+    "state": "GA",
+    "county": "United States",
+    "zip": "30720"
   },
   {
     "name": "Charles Henry Ray ,Jr.",
@@ -99,6 +263,41 @@
     "zip": "32225"
   },
   {
+    "name": "Ted A Tetzlaff",
+    "organization": "",
+    "street": "1365 Hudson Way",
+    "city": "Grand Island",
+    "state": "FL",
+    "county": "",
+    "zip": "32735"
+  },
+  {
+    "name": "Isatou Davis",
+    "organization": "",
+    "street": "1070 SW 191 Lane",
+    "city": "Pembroke Pines",
+    "state": "FL",
+    "county": "",
+    "zip": "33029"
+  },
+  {
+    "name": "",
+    "organization": "Rincon Jimenez Enterprises LLC",
+    "street": "6191 W Atlantic Blvd # 1",
+    "city": "Margate",
+    "state": "Florida",
+    "zip": "33063"
+  },
+  {
+    "name": "",
+    "organization": "Hillsboro Petroleum West, Inc.",
+    "street": "19323 Skyridge Cir.",
+    "city": "Boca Raton",
+    "state": "FL",
+    "county": "",
+    "zip": "33498"
+  },
+  {
     "name": "Rocky Dean Haynes Jr.",
     "organization": "",
     "street": "10216 Douglas Oaks Circle Apt. 301",
@@ -108,6 +307,14 @@
     "zip": "33610-8661"
   },
   {
+    "name": "Svetoslav Viktorov Ivanov",
+    "organization": "",
+    "street": "342 Ospreys Landing Apt 2105",
+    "city": "Naples",
+    "state": "FL",
+    "zip": "34104"
+  },
+  {
     "name": "Robert John Blase",
     "organization": "",
     "street": "8396 Jesolo Lane",
@@ -115,6 +322,41 @@
     "county": "",
     "state": "Florida",
     "zip": "34238-4738"
+  },
+  {
+    "name": "LaQuisha  Harris",
+    "organization": "",
+    "street": "300 36th Ave NE",
+    "city": "Center Point",
+    "state": "AL",
+    "zip": "35215 - 1412"
+  },
+  {
+    "name": "",
+    "organization": "Professional Resources Management of Crenshaw, LLC",
+    "street": "60 Commerce Street, Suite 700",
+    "city": "Montgomery",
+    "state": "Alabama",
+    "county": "",
+    "zip": "36104"
+  },
+  {
+    "name": "Belton Jimmie Crooks Sr.",
+    "organization": "",
+    "street": "3658 Cloverdale Rd",
+    "city": "Montgomery",
+    "state": "AL",
+    "county": "U.S.A.",
+    "zip": "36111"
+  },
+  {
+    "name": "Milton W Gilchrist,Jr",
+    "organization": "",
+    "street": "4910 Paddock Club Court Apt A",
+    "city": "Montgomery",
+    "state": "AL",
+    "county": "",
+    "zip": "36116"
   },
   {
     "name": "Angela Rynette Thomas",
@@ -135,6 +377,83 @@
     "zip": "36502"
   },
   {
+    "name": "Brian Lane Bonner",
+    "organization": "",
+    "street": "824 Bonneville Drive",
+    "city": "Mobile",
+    "state": "AL",
+    "zip": "36695"
+  },
+  {
+    "name": "Billy Gene Walls Jr",
+    "organization": "",
+    "street": "114 Mrs. Gower Rd.",
+    "city": "Lawrenceburg",
+    "state": "Tennessee",
+    "county": "",
+    "zip": "38464 - 5940"
+  },
+  {
+    "name": "Dana Walker",
+    "organization": "",
+    "street": "105 Briggs Cove",
+    "city": "Lamar",
+    "state": "MS",
+    "county": "",
+    "zip": "38642 - 8205"
+  },
+  {
+    "name": "Leonard  Beasley",
+    "organization": "",
+    "street": "319 TICKETT AVE",
+    "city": "Greenwood",
+    "state": "MS",
+    "zip": "38930"
+  },
+  {
+    "name": "Eric Sherrod",
+    "organization": "",
+    "street": "1098 South Perkins Road",
+    "city": "Columbus",
+    "state": "Mississippi",
+    "county": "",
+    "zip": "39705"
+  },
+  {
+    "name": "Roger W. VanHoose,Jr.",
+    "organization": "",
+    "street": "190 Lakeshore Circle",
+    "city": "Georgetown",
+    "state": "KY",
+    "county": "",
+    "zip": "40324"
+  },
+  {
+    "name": "Paul Logan Cardwell",
+    "organization": "",
+    "street": "305 Liberty Street",
+    "city": "Franklin",
+    "state": "KY",
+    "zip": "42134"
+  },
+  {
+    "name": "Gary R. Brown",
+    "organization": "",
+    "street": "5661 Seapine Rd.",
+    "city": "Hilliard",
+    "state": "OH",
+    "zip": "43026"
+  },
+  {
+    "name": "Ronald L Smith, II",
+    "organization": "",
+    "street": "7182 Calusa Drive",
+    "city": "Reynoldsburg",
+    "state": "OH",
+    "county": "USA",
+    "zip": "43068"
+  },
+  {
     "name": "Charles P Mercer",
     "organization": "",
     "street": "P.O. Box 763",
@@ -142,6 +461,14 @@
     "county": "",
     "state": "OH",
     "zip": "43140"
+  },
+  {
+    "name": "Lisa M Arebaugh",
+    "organization": "",
+    "street": "2602 E. Township Road 148",
+    "city": "Tiffin",
+    "state": "OH",
+    "zip": "44883"
   },
   {
     "name": "Stephen L. Green Jr.",
@@ -171,6 +498,33 @@
     "zip": "48235-4519"
   },
   {
+    "name": "David E. Simpson Jr.",
+    "organization": "",
+    "street": "8176 Teachout Rd.",
+    "city": "Otisville",
+    "state": "MI",
+    "county": "",
+    "zip": "48463 - 9418"
+  },
+  {
+    "name": "Ratasha Martin",
+    "organization": "",
+    "street": "5106 Wexford Road",
+    "city": "Lansing",
+    "state": "Michigan",
+    "county": "United States",
+    "zip": "48911"
+  },
+  {
+    "name": "Andrew Reid Thayer",
+    "organization": "",
+    "street": "7680 Butler Court",
+    "city": "Onsted",
+    "state": "MI",
+    "county": "U.S.",
+    "zip": "49265 - 9433"
+  },
+  {
     "name": "Patrick Allen McClure",
     "organization": "",
     "street": "8661 E Butterfly Ln",
@@ -178,6 +532,23 @@
     "county": "",
     "state": "MI",
     "zip": "49349-9575"
+  },
+  {
+    "name": "Jeremy L. Wehmeyer",
+    "organization": "",
+    "street": "227 2nd St",
+    "city": "Atalissa",
+    "state": "IA",
+    "zip": "52720"
+  },
+  {
+    "name": "STEPHEN BRIAN ADAMS,JR.",
+    "organization": "",
+    "street": "3822 E. Edgerton Ave.",
+    "city": "Cudahy",
+    "state": "WI",
+    "county": "",
+    "zip": "53110 - 1906"
   },
   {
     "name": "Orlando Hernandez, Sr.",
@@ -189,6 +560,15 @@
     "zip": "53223-1006"
   },
   {
+    "name": "Larry L. Haumschild ,Jr.",
+    "organization": "",
+    "street": "W7826 County Road V",
+    "city": "Lake Mills",
+    "state": "WI",
+    "county": "",
+    "zip": "53551"
+  },
+  {
     "name": "Cinthia Ivana Fonseca",
     "organization": "",
     "street": "1684 Wicke Ave",
@@ -196,6 +576,14 @@
     "county": "",
     "state": "IL",
     "zip": "60018-1715"
+  },
+  {
+    "name": "Jannely  Montes",
+    "organization": "",
+    "street": "3060 Arthur Ct APT# A3",
+    "city": "Waukegan",
+    "state": "IL",
+    "zip": "60085"
   },
   {
     "name": "Sonji S Dixon-McCoy",
@@ -207,6 +595,15 @@
     "zip": "60419-"
   },
   {
+    "name": "Daniel Kaleta",
+    "organization": "",
+    "street": "7236 W 62nd St",
+    "city": "Summit Argo",
+    "state": "Illinois",
+    "county": "U.S.A.",
+    "zip": "60501"
+  },
+  {
     "name": "Everardo Rubio Jr.",
     "organization": "",
     "street": "4520 Joliet Ave",
@@ -214,6 +611,107 @@
     "county": "",
     "state": "IL",
     "zip": "60534"
+  },
+  {
+    "name": "Elena  Jackson",
+    "organization": "",
+    "street": "716 Blossom Ct.",
+    "city": "Naperville",
+    "state": "IL",
+    "zip": "60540"
+  },
+  {
+    "name": "",
+    "organization": "Central Trading Company Ltd.",
+    "street": "1501 North Division Street",
+    "city": "Plainfield",
+    "state": "Illinois",
+    "zip": "60544 - 3890"
+  },
+  {
+    "name": "Erlinda Balguma",
+    "organization": "",
+    "street": "3123 West Howard Street",
+    "city": "Chicago",
+    "state": "Illinois",
+    "county": "",
+    "zip": "60645"
+  },
+  {
+    "name": "Ashley  Bond",
+    "organization": "",
+    "street": "7717 S Kingston Ave Apt 3",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60649"
+  },
+  {
+    "name": "Shannon Lee Tucker",
+    "organization": "",
+    "street": "2560 E Olive St",
+    "city": "Decatur",
+    "state": "IL",
+    "zip": "62526 - 5349"
+  },
+  {
+    "name": "Delveccio Antonio Zollar,Sr.",
+    "organization": "",
+    "street": "5223 Spruce Avenue",
+    "city": "Kansas City",
+    "state": "MO",
+    "county": "",
+    "zip": "64130"
+  },
+  {
+    "name": "Miya Jayzette Williams",
+    "organization": "",
+    "street": "7201 Laurel Ridge",
+    "city": "Greenwood",
+    "state": "LA",
+    "county": "United States",
+    "zip": "71033"
+  },
+  {
+    "name": "Katherine Elaine Geter",
+    "organization": "",
+    "street": "4650 S. Pinnacle Hills Pkwy 206",
+    "city": "Rogers",
+    "state": "Arkansas",
+    "zip": "72758"
+  },
+  {
+    "name": "Adam Ray Richardson",
+    "organization": "",
+    "street": "P.O. Box 682",
+    "city": "Waldron",
+    "state": "AR",
+    "zip": "72958"
+  },
+  {
+    "name": "David Allen Topaum Jr.",
+    "organization": "",
+    "street": "6110 Northwest Cherry Avenue",
+    "city": "Lawton",
+    "state": "OK",
+    "county": "USA",
+    "zip": "73505 - 4427"
+  },
+  {
+    "name": "Jay Damron",
+    "organization": "",
+    "street": "1040 NW 38th Street",
+    "city": "Lawton",
+    "state": "OK",
+    "county": "",
+    "zip": "73505"
+  },
+  {
+    "name": "",
+    "organization": "Symmetrix Technologies, LLC",
+    "street": "106 N Denton Tap Rd Suite 210-262",
+    "city": "Coppell",
+    "state": "TX",
+    "zip": "75019"
   },
   {
     "name": "Hilda Flores",
@@ -225,6 +723,48 @@
     "zip": "75040-5551"
   },
   {
+    "name": "Shirley Merritt Willaby",
+    "organization": "",
+    "street": "104 Joshua Tree Ct",
+    "city": "Forney",
+    "state": "Texas",
+    "zip": "75126 - 0200"
+  },
+  {
+    "name": "",
+    "organization": "Consortium B, Inc.",
+    "street": "1075 Griffin Street West",
+    "city": "Dallas",
+    "state": "Texas",
+    "county": "",
+    "zip": "75215"
+  },
+  {
+    "name": "Brenda Vega Chavez",
+    "organization": "",
+    "street": "7000 Newberry Ct E",
+    "city": "Fort Worth",
+    "state": "TX",
+    "county": "",
+    "zip": "76120"
+  },
+  {
+    "name": "",
+    "organization": "CB&I Holdco, LLC",
+    "street": "757 North Eldridge Parkway",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77079 - 4527"
+  },
+  {
+    "name": "Ralphel  Johnson",
+    "organization": "",
+    "street": "20611 Beigewood Dr",
+    "city": "Humble",
+    "state": "TX",
+    "zip": "77338"
+  },
+  {
     "name": "Stephen Guynes",
     "organization": "",
     "street": "2507 Dry Wind Court",
@@ -232,6 +772,55 @@
     "county": "",
     "state": "TX",
     "zip": "77396"
+  },
+  {
+    "name": "",
+    "organization": "Wholesale Intertrade Distributor, Inc.",
+    "street": "1351 Pony Trail Pl.",
+    "city": "El Paso",
+    "state": "TX",
+    "zip": "79936 - 6982"
+  },
+  {
+    "name": "Sabrina  Renfroe",
+    "organization": "",
+    "street": "15470 E. Temple Place",
+    "city": "Aurora",
+    "state": "Colorado",
+    "zip": "80015"
+  },
+  {
+    "name": "Steven Gustav Broman",
+    "organization": "",
+    "street": "11035 Grape Way",
+    "city": "Thornton",
+    "state": "Colorado",
+    "zip": "80233"
+  },
+  {
+    "name": "",
+    "organization": "Drager C-Stores, LLC",
+    "street": "304 Challenger Place",
+    "city": "Longmont",
+    "state": "CO",
+    "zip": "80501"
+  },
+  {
+    "name": "Robert Eugene Warren",
+    "organization": "",
+    "street": "1807 West 5000 South",
+    "city": "Roy",
+    "state": "UT",
+    "zip": "84067"
+  },
+  {
+    "name": "Vernon L McCalmant, III",
+    "organization": "",
+    "street": "2318 West 4475 South",
+    "city": "Roy",
+    "state": "UT",
+    "county": "USA",
+    "zip": "84067 - 1938"
   },
   {
     "name": "MANUEL VICTOR SOLIZ ,III",
@@ -243,6 +832,22 @@
     "zip": "85037-5824"
   },
   {
+    "name": "",
+    "organization": "Artisan Builders, LLC",
+    "street": "14362 N. Frank Lloyd Wright Blvd., #1000",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "zip": "85260 - 8847"
+  },
+  {
+    "name": "",
+    "organization": "CRC MEDIA WEST. LLC",
+    "street": "8145 EAST EVANS SUITE 8",
+    "city": "SCOTTSDALE",
+    "state": "AZ",
+    "zip": "85260"
+  },
+  {
     "name": "SHERLYTAKYREE HICKSON",
     "organization": "",
     "street": "2706 S 257TH AVE",
@@ -252,6 +857,64 @@
     "zip": "85326-"
   },
   {
+    "name": "COLIN ALLAN PARKER",
+    "organization": "",
+    "street": "1440 W. IRVINGTON RD.",
+    "city": "TUCSON",
+    "state": "Arizona",
+    "zip": "85746 - 4100"
+  },
+  {
+    "name": "Roseanne Botham",
+    "organization": "",
+    "street": "12429 Breezewood Dr., #D",
+    "city": "Whittier",
+    "state": "CA",
+    "county": "",
+    "zip": "90604"
+  },
+  {
+    "name": "Josefina Garcia Montes",
+    "organization": "",
+    "street": "12746 1/2 Kalnor Ave",
+    "city": "Norwalk",
+    "state": "CA",
+    "zip": "90650"
+  },
+  {
+    "name": "David  Amundson",
+    "organization": "",
+    "street": "25363 Woodward Ave.",
+    "city": "Lomita",
+    "state": "California",
+    "zip": "90717"
+  },
+  {
+    "name": "Maria De Los Angeles Najera",
+    "organization": "",
+    "street": "10340 Canoga Ave, Apt 220",
+    "city": "Chatsworth",
+    "state": "California",
+    "zip": "91311 - 2281"
+  },
+  {
+    "name": "Julie Melendrez",
+    "organization": "",
+    "street": "721 Griswold Avenue",
+    "city": "San Fernando",
+    "state": "California",
+    "county": "US",
+    "zip": "91340 - 2104"
+  },
+  {
+    "name": "Jose  Gutierrez",
+    "organization": "",
+    "street": "PO BOX 7553",
+    "city": "Redlands",
+    "state": "CA",
+    "zip": "92375 - 0553"
+  },
+  {
     "name": "Lourdes Veronica Castillo",
     "organization": "",
     "street": "63 S Garcia",
@@ -259,6 +922,15 @@
     "county": "",
     "state": "CA",
     "zip": "93640-"
+  },
+  {
+    "name": "Daniel Gonzales Sr",
+    "organization": "",
+    "street": "335 Regency Circle #103",
+    "city": "Salinas",
+    "state": "CA",
+    "county": "",
+    "zip": "93906"
   },
   {
     "name": "Gary Ge",
@@ -277,5 +949,13 @@
     "county": "",
     "state": "California",
     "zip": "95076-"
+  },
+  {
+    "name": "Arnulfo Hernandez Dacanay,",
+    "organization": "",
+    "street": "446 Capitol Village Circle",
+    "city": "San Jose",
+    "state": "CA",
+    "zip": "95136"
   }
 ]
