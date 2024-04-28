@@ -422,8 +422,12 @@ def main(args) -> None:
     for d in args.dirs[0]:
         my_data.add_directory(d)
     my_data.process_files()
-    j_data: json = json.dumps(my_data.data, indent=4)
+    
+    # Sort data by zipcode
+    sorted_data = sorted(my_data.data, key=lambda x: x.get('zip', ''))
 
+    # Convert sorted data to JSON
+    j_data = json.dumps(sorted_data, indent=4)
     # print data as python object
     # print(f'Data: {my_data.data}')
 
