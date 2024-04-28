@@ -70,7 +70,7 @@ def parse_xml(file_name):
                 data.append(this_data)
     if not data:
         raise Exception("The content of {0} is either empty, or have wrong root name.".format(file_name))
-    return generate_json(data)
+    return data
 
 def parse_tsv(file_name):
     with open(file_name, "r", newline="") as tsvfile:
@@ -100,7 +100,7 @@ def parse_tsv(file_name):
             data.append(this_data)
     if not data:
         raise Exception("The content of {0} is either empty, or have wrong header name.".format(file_name))
-    return generate_json(data)
+    return data
 
 def parse_txt(file_name):
     with open(file_name, "r") as file:
@@ -141,7 +141,7 @@ def parse_txt(file_name):
             data.append(this_data)
     if not data:
         raise Exception("The content of {0} is either empty, or have wrong header name.".format(file_name))
-    return generate_json(data)
+    return data
         
 def generate_json(data):
     sorted_data = sorted(data, key=lambda x: x.get('zip', ''))
@@ -170,24 +170,22 @@ def check_valid(this_data):
 
 def main(args):
     try:
-        if args.xml_list:
-            for xml_file in args.xml_list:
-                print("Start parsing {0}".format(xml_file))
-                sorted_json_data = parse_xml(xml_file)
-                print("{0} finished, the result is:".format(xml_file))
-                print(sorted_json_data)
-        if args.tsv_list:
-            for tsv_file in args.tsv_list:
-                print("Start parsing {0}".format(tsv_file))
-                sorted_json_data = parse_tsv(tsv_file)
-                print("{0} finished, the result is:".format(tsv_file))
-                print(sorted_json_data)
-        if args.txt_list:
-            for txt_file in args.txt_list:
-                print("Start parsing {0}".format(txt_file))
-                sorted_json_data = parse_txt(txt_file)
-                print("{0} finished, the result is:".format(txt_file))
-                print(sorted_json_data)
+        if args.f:
+            data = []
+            for single_file in args.f:
+                if single_file[-4:] == ".xml":
+                    data = data + parse_xml(single_file)
+                elif single_file[-4:] == ".tsv":
+                    data = data + parse_tsv(single_file)
+                elif single_file[-4:] == ".txt":
+                    data = data + parse_txt(single_file)
+                else:
+                    print("{0} is not a supported file type".format(single_file), file=sys.stderr)
+                    exit(1)
+            print(generate_json(data))
+        else:
+            print("Please give a list of file as input", file=sys.stderr)
+            exit(1)
     except Exception as e:
         print("An error occurred: {0}".format(str(e)), file=sys.stderr)
         exit(1)
@@ -197,9 +195,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='This script extracts address of person or organization from input xml, tsv, or txt file. For detailed formation requirement, please check\
                                      https://github.com/BKWatch/CodingChallenge/tree/main')
     
-    parser.add_argument('--xml', nargs='+', type=str, dest='xml_list', help='Space separate xml files input')
-    parser.add_argument('--tsv', nargs='+', type=str, dest='tsv_list', help='Space separate tsv files input')
-    parser.add_argument('--txt', nargs='+', type=str, dest='txt_list', help='Space separate txt files input')
+    parser.add_argument('--file', nargs='+', type=str, dest='f', help='Space separate xml, tsv, and txt files input')
     args = parser.parse_args()
 
     main(args)
