@@ -83,6 +83,13 @@ challenge.
 To Submit your solution, fork this repository and submit a pull request. It
 should consist of a single commit with a concise commit message.
 
+## Run Code
+
+To run the program, type:
+```
+python challenge.py input/input1.xml input/input2.tsv input/input3.txt
+```
+
 ---
 
 Copyright &copy; 2024 BankruptcyWatch, LLC
