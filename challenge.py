@@ -1,3 +1,11 @@
+"""
+Rickey Burgey's submission for the coding challenge.  
+challenge.py accepts a space seperated file list in the form of 
+    python challenge.py -files file1.ext file2.ext
+It detects malformed data and provides useful error messages 
+for tracking down the offending data.
+"""
+
 import sys, csv, argparse, json
 from pathlib import Path
 sys.modules['_elementtree'] = None
