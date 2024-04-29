@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 class XMLParser:
     @staticmethod
-    def parse(file_path):
+    def parse(file_path) -> list:
         addresses = []
         try:
             tree = ET.parse(file_path)
@@ -41,7 +41,7 @@ class XMLParser:
 
 class TSVParser:
     @staticmethod
-    def parse(file_path):
+    def parse(file_path) -> list:
         addresses = []
         try:
             with open(file_path, 'r') as file:
@@ -79,21 +79,21 @@ class TSVParser:
                     if merged_zip.endswith('-'):
                         merged_zip = merged_zip[:-1]
                     address['zip'] = merged_zip
-
                     addresses.append(address)
+
         except Exception as e:
             sys.stderr.write(f"Error parsing TSV file {file_path}: {str(e)}\n")
             sys.exit(1)
         return addresses
 
     @staticmethod
-    def clean_value(value):
+    def clean_value(value) -> str:
         cleaned = value.strip() if value else ""
         return "" if cleaned.lower() in ("n/a", "n/m/n") else cleaned
 
 class TextParser:
     @staticmethod
-    def parse(file_path):
+    def parse(file_path) -> list:
         try:
             with open(file_path, 'r') as file:
                 address_lines = file.readlines()
@@ -121,7 +121,7 @@ class TextParser:
         return parsed_addresses
 
     @staticmethod
-    def parse_address(address_lines):
+    def parse_address(address_lines) -> dict:
         address = {}
         first_line = address_lines[0].lower()
         keywords = ['llc', 'ltd', 'inc']
