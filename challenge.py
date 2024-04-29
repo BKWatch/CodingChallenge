@@ -195,6 +195,7 @@ def parse_txt(file_path: str) -> list[dict]:
         if group:
             entry = parse_txt_group(group, file_path)
             entries.append(entry)
+            
         return entries
 
 
@@ -204,17 +205,18 @@ def check_files_exist(file_list: list[str]) -> bool:
             raise Exception(f"Input file not found.  File:{file_path}")
     return True
 
-def check_files_extension(file_list: list[str]):
+def check_files_extension(file_list: list[str]) -> bool:
     for file_path in file_list:
         if len(file_path) < 4 or file_path[-4:] not in set([".xml", ".tsv", ".txt"]): 
             raise Exception(f"File not in recognized format (xml, tsv, txt).  File: {file_path}")
+    return True
 
-def generate_json(entries:list[dict]):
+def generate_json(entries: list[dict])->str:
     entries_sorted = sorted(entries, key=lambda x: x.get('zip', ''))
     entries_json = json.dumps(entries_sorted, indent=2)
     return entries_json
 
-def main(file_list:list[str]):
+def main(file_list: list[str]):
     try:
         check_files_extension(file_list)
         check_files_exist(file_list)
@@ -230,7 +232,6 @@ def main(file_list:list[str]):
 
         json_results = generate_json(results)
         print(json_results)
-        return json_results
             
     except Exception as e:
         print(getattr(e, 'message', str(e)), file=sys.stderr)
