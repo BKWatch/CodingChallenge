@@ -3,9 +3,9 @@ import argparse
 import sys
 from functools import cmp_to_key
 
-from xml_parser import parse_xml
-from tsv_parser import parse_tsv
-from txt_parser import parse_txt
+from address_parser.xml_parser import parse_xml
+from address_parser.tsv_parser import parse_tsv
+from address_parser.txt_parser import parse_txt
 
 
 # Comparator function for sorting addresses by ZIP code

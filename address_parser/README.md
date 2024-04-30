@@ -20,7 +20,7 @@ Addresses are sorted by ZIP code in ascending order. The output is pretty-printe
 To use the script, run it from the command line, passing the file paths as arguments. The script accepts multiple file paths.
 
 ```console
-python address_parser/file_parser.py input/input1.xml input/input2.tsv input/input3.txt
+python challenge.py input/input1.xml input/input2.tsv input/input3.txt
 ```
 ### Options
 --help - Display a help message and exit.
@@ -29,7 +29,7 @@ python address_parser/file_parser.py input/input1.xml input/input2.tsv input/inp
 The script outputs to standard output (stdout). To save the output to a file, redirect the output as follows:
 
 ```console
-python address_parser/file_parser.py input/input1.xml input/input2.tsv input/input3.txt > <filepath>/output.json
+python challenge.py input/input1.xml input/input2.tsv input/input3.txt > <filepath>/output.json
 ```
 ### Error Handling
 The script checks for errors in the argument list. If no files are provided, or an invalid option is used, the script will print a usage message to stderr.  
