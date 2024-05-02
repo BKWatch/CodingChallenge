@@ -155,7 +155,12 @@ def main():
     errors = False
     Address = namedtuple('Address', ['name', 'organization', 'street', 'city', 'county', 'state', 'zip'])
     
-    for file_name in args.files[0].split('=')[1].split(','):
+    # Get files list
+    files_list = args.files
+    if (len(files_list) == 1) and ('=' in args.files[0]) and (',' in args.files[0]):
+        files_list = args.files[0].split('=')[1].split(',')
+    
+    for file_name in files_list:
         try:
             addresses_list = parse_address_file(file_name)
             for address in addresses_list:
@@ -170,7 +175,7 @@ def main():
         except (FileNotFoundError, ValueError) as e:
             print(f"Error processing {file_name}: {e}", file=sys.stderr)
             errors = True
-
+    
     if errors:
         sys.exit(1)
 
