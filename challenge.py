@@ -10,14 +10,42 @@ def parse_xml(file_path):
     entities = []
     for ent in root.findall(".//ENT"):
         entity = {}
+
         name = ent.find("NAME").text.strip()
         company = ent.find("COMPANY").text.strip()
-        entity['name'] = name if name else None
-        entity['organization'] = company if company else None
-        entity['street'] = ent.find("STREET").text.strip()
-        entity['city'] = ent.find("CITY").text.strip()
-        entity['state'] = ent.find("STATE").text.strip()
-        entity['zip'] = ent.find("POSTAL_CODE").text.strip().split(" - ")[0]
+
+        street1 = ent.find("STREET").text.strip()
+        street2 = ent.find("STREET_2").text.strip()
+        street3 = ent.find("STREET_3").text.strip()
+        if street1:
+            street = street1
+        if street2:
+            street += ", " + street2
+        if street3:
+            street += ", " + street3
+
+        city = ent.find("CITY").text.strip()
+        state = ent.find("STATE").text.strip()
+
+        postal_code = ""
+        if ent.find("POSTAL_CODE").text.strip():
+            post_ary = ent.find("POSTAL_CODE").text.split(" - ")
+            postal_code = post_ary[0].strip()
+            if len(post_ary) >= 2 and post_ary[1].strip():
+                postal_code += "-" + post_ary[1].strip()
+
+        if name:
+            entity['name'] = name
+        if company:
+            entity['organization'] = company
+        if street:
+            entity['street'] = street
+        if city:
+            entity['city'] = city
+        if state:
+            entity['state'] = state
+        if postal_code:
+            entity['zip'] = postal_code
         entities.append(entity)
     return entities
 
@@ -27,12 +55,29 @@ def parse_tsv(file_path):
         reader = csv.DictReader(file, delimiter='\t')
         for row in reader:
             entity = {}
-            entity['name'] = f"{row['first']} {row['middle']} {row['last']}".strip() if row['first'] else None
-            entity['organization'] = row['organization'].strip() if row['organization'] != 'N/A' else None
-            entity['street'] = row['address'].strip()
-            entity['city'] = row['city'].strip()
-            entity['state'] = row['state'].strip()
-            entity['zip'] = row['zip'].strip()
+            if row['first']:
+                if row['middle'] == 'N/M/N':
+                    entity['name'] = f"{row['first']} {row['last']}".strip()
+                else:
+                    entity['name'] = f"{row['first']} {row['middle']} {row['last']}".strip()
+
+            if row['organization'] != 'N/A':
+                entity['organization'] = row['organization'].strip() 
+            elif row['last'] and not row['first']:
+                entity['organization'] = row['last']
+
+            if row['address']:
+                entity['street'] = row['address'].strip()
+            if row['city']:
+                entity['city'] = row['city'].strip()
+            if row['county']:
+                entity['county'] = row['county'].strip()
+            if row['state']:
+                entity['state'] = row['state'].strip()
+            if row['zip']:
+                entity['zip'] = row['zip'].strip()
+                if row['zip4']:
+                    entity['zip'] = entity['zip'] + "-" + row['zip4'].strip()
             entities.append(entity)
     return entities
 
@@ -40,19 +85,39 @@ def parse_txt(file_path):
     entities = []
     with open(file_path, 'r') as file:
         lines = file.readlines()
+        content_no = 0
+        county = ""
+        entity = {}
         for line in lines:
-            parts = line.strip().split(', ')
-            if len(parts) < 6:
-                print(f"Warning: Skipping malformed line: {line.strip()}", file=sys.stderr)
+            line = line.strip()
+
+            if len(line) == 0:
+                content_no = 0
+                county = ""
+                if entity != {}:
+                    entities.append(entity)
+                entity = {}
                 continue
-            entity = {}
-            entity['name'] = parts[0] if parts[0] != 'N/A' else None
-            entity['organization'] = parts[1] if parts[1] != 'N/A' else None
-            entity['street'] = parts[2]
-            entity['city'] = parts[3]
-            entity['state'] = parts[4]
-            entity['zip'] = parts[5].split(' - ')[0]
-            entities.append(entity)
+            if content_no == 0:
+                entity['name'] = line
+            elif content_no == 1:
+                entity['street'] = line
+            elif line.find('COUNTY') != -1:
+                county = line.replace(" COUNTY", "")
+            else:
+                dot_pos = line.find(", ")
+                space_pos = line.rfind(" ")
+                entity['city'] = line[: dot_pos]
+                if county:
+                    entity['county'] = county
+                entity['state'] = line[dot_pos + 2: space_pos]
+                zip_code = line[space_pos + 1: ]
+                if zip_code.rfind("-") == len(zip_code) - 1:
+                    entity['zip'] = zip_code[0: len(zip_code) - 1]
+                else:
+                    entity['zip'] = zip_code
+
+            content_no += 1
     return entities
 
 def main():
